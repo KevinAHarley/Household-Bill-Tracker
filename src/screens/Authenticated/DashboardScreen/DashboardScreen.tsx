@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+
+import Background from "components/Background";
 
 const DashboardScreen = () => {
   return (
-    <View>
+    <Background>
       <Text>DashboardScreen Screen</Text>
-    </View>
+    </Background>
   );
 };
 

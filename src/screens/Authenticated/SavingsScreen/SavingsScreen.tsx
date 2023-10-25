@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+
+import Background from "components/Background";
 
 const SavingsScreen = () => {
   return (
-    <View>
+    <Background>
       <Text>Savings Screen</Text>
-    </View>
+    </Background>
   );
 };
 

@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+
+import Background from "components/Background";
 
 const BorrowingScreen = () => {
   return (
-    <View>
+    <Background>
       <Text>Borrowing Screen</Text>
-    </View>
+    </Background>
   );
 };
 
