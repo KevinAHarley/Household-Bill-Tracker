@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+
+import Background from "components/Background";
 
 const BillsScreen = () => {
   return (
-    <View>
+    <Background>
       <Text>Bills Screen</Text>
-    </View>
+    </Background>
   );
 };
 
