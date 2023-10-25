@@ -1,12 +1,12 @@
 import { Text, View } from "react-native";
 
-import Checkbox from "components/Checkbox";
+import Divider from "components/Divider";
 
 const DashboardScreen = () => {
   return (
     <View>
       <Text>DashboardScreen Screen</Text>
-      <Checkbox />
+      <Divider />
     </View>
   );
 };
