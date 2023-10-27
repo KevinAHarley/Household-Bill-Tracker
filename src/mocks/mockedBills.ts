@@ -5,6 +5,7 @@ const mockedBills = [
     amount: 685,
     dueDate: "2023-10-28T01:00:00.000Z",
     category: "House",
+    occurrence: "Monthly",
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ const mockedBills = [
     amount: 120,
     dueDate: "2023-10-30T01:00:00.000Z",
     category: "House",
+    occurrence: "Monthly",
   },
   {
     id: "3",
@@ -19,6 +21,7 @@ const mockedBills = [
     amount: 92,
     dueDate: "2023-10-29T01:00:00.000Z",
     category: "House",
+    occurrence: "Monthly",
   },
   {
     id: "4",
@@ -26,6 +29,7 @@ const mockedBills = [
     amount: 85,
     dueDate: "2023-10-31T01:00:00.000Z",
     category: "House",
+    occurrence: "Monthly",
   },
   {
     id: "5",
@@ -33,6 +37,7 @@ const mockedBills = [
     amount: 18,
     dueDate: "2023-11-02T01:00:00.000Z",
     category: "Insurance",
+    occurrence: "Monthly",
   },
   {
     id: "6",
@@ -40,6 +45,7 @@ const mockedBills = [
     amount: 8.99,
     dueDate: "2023-11-04T01:00:00.000Z",
     category: "Entertainment",
+    occurrence: "Monthly",
   },
   {
     id: "7",
@@ -47,6 +53,7 @@ const mockedBills = [
     amount: 140.85,
     dueDate: "2023-10-26T01:00:00.000Z",
     category: "Utilities",
+    occurrence: "Monthly",
   },
   {
     id: "8",
@@ -54,6 +61,7 @@ const mockedBills = [
     amount: 80.88,
     dueDate: "2023-11-09T01:00:00.000Z",
     category: "Loan",
+    occurrence: "Monthly",
   },
 ];
 
