@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, ViewStyle } from "react-native";
 
 import Checkbox from "components/Checkbox";
 import Divider from "components/Divider";
@@ -12,7 +12,10 @@ type BorrowingListProps = {
   reason: string;
   checkbox?: boolean;
   checked?: boolean;
+  style?: ViewStyle;
+  id?: string;
   onPress?: () => void;
+  onCheckPress?: () => void;
 };
 
 const BorrowingList = ({
@@ -21,12 +24,20 @@ const BorrowingList = ({
   reason,
   checkbox,
   checked,
+  style,
+  id,
   onPress,
+  onCheckPress,
 }: BorrowingListProps) => {
   return (
     <Pressable
-      style={checkbox ? styles.containerWithCheckbox : styles.container}
+      style={
+        checkbox
+          ? [styles.containerWithCheckbox, style]
+          : [styles.container, style]
+      }
       onPress={onPress}
+      id={id}
     >
       <View style={styles.textContainer}>
         <Text style={checked ? styles.textWithStrike : styles.text}>
@@ -38,7 +49,7 @@ const BorrowingList = ({
         <Text style={checked ? styles.textWithStrike : styles.text}>
           {reason}
         </Text>
-        {checkbox && <Checkbox />}
+        {checkbox && <Checkbox onPress={onCheckPress} />}
       </View>
       <Divider style={styles.divider} />
     </Pressable>
