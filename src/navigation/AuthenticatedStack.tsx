@@ -12,8 +12,9 @@ import SavingsScreen from "screens/Authenticated/SavingsScreen";
 import getTabBarIconName from "utils/getTabBarIconName";
 
 import styles from "./AuthenticatedStack.styles";
+import { AuthenticatedStackParamList } from "./AuthenticatedStack.types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthenticatedStackParamList>();
 const Tab = createBottomTabNavigator();
 
 const AuthenticatedStack = () => {

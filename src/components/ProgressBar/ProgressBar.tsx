@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, ViewStyle } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -9,9 +9,10 @@ import styles from "./ProgressBar.styles";
 type ProgressBarProps = {
   goal: number;
   progress: number;
+  style?: ViewStyle;
 };
 
-const ProgressBar = ({ goal, progress }: ProgressBarProps) => {
+const ProgressBar = ({ goal, progress, style }: ProgressBarProps) => {
   const currentProgress = progress / goal;
   const currentProgressAsPercentage = currentProgress * 100 + "%";
   const oppositeProgress = 1 - currentProgress;
@@ -24,7 +25,7 @@ const ProgressBar = ({ goal, progress }: ProgressBarProps) => {
   const progressBarLengthCheck = progress.toString().length > 4;
 
   return (
-    <View>
+    <View style={style}>
       <View style={styles.goalContainer}>
         <View style={styles.goalTextContainer}>
           {goalTextCutoff && !goalBarLengthCheck ? (

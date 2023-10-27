@@ -70,3 +70,5 @@ export const Avatar: FC<AvatarProps> = ({
     </Pressable>
   );
 };
+
+export default Avatar;
