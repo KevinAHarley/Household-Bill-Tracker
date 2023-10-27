@@ -7,6 +7,7 @@ const mockedBorrowing = [
     createdAt: "2023-10-17T00:00:00.000Z",
     repayDate: "2023-10-31T00:00:00.000Z",
     reason: "Tickets",
+    repaid: false,
   },
   {
     id: "2",
@@ -16,6 +17,7 @@ const mockedBorrowing = [
     createdAt: "2023-10-20T00:00:00.000Z",
     repayDate: "2023-11-01T00:00:00.000Z",
     reason: "Food",
+    repaid: false,
   },
   {
     id: "3",
@@ -25,6 +27,7 @@ const mockedBorrowing = [
     createdAt: "2023-10-19T00:00:00.000Z",
     repayDate: "2023-11-30T00:00:00.000Z",
     reason: "Rent",
+    repaid: false,
   },
   {
     id: "4",
@@ -34,6 +37,7 @@ const mockedBorrowing = [
     createdAt: "2023-10-19T00:00:00.000Z",
     repayDate: "2023-10-22T00:00:00.000Z",
     reason: "Food",
+    repaid: false,
   },
   {
     id: "5",
@@ -43,6 +47,7 @@ const mockedBorrowing = [
     createdAt: "2023-10-22T00:00:00.000Z",
     repayDate: "2023-11-05T00:00:00.000Z",
     reason: "Tickets",
+    repaid: false,
   },
   {
     id: "6",
@@ -52,6 +57,7 @@ const mockedBorrowing = [
     createdAt: "2023-10-19T00:00:00.000Z",
     repayDate: "2023-11-17T00:00:00.000Z",
     reason: "Rent",
+    repaid: true,
   },
 ];
 
