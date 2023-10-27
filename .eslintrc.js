@@ -5,6 +5,8 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint", "import"],
   rules: {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "import/no-self-import": "error",
     "import/newline-after-import": "warn",
     "import/no-duplicates": "error",

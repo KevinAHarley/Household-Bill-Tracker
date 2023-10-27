@@ -7,7 +7,7 @@ type SwitchButtonProps = {
   leftButtonText: string;
   rightButtonText: string;
   containerStyle?: ViewStyle;
-  onChange?: () => void;
+  onChange?: (option: number) => void;
 };
 
 const SwitchButton = ({
@@ -22,7 +22,7 @@ const SwitchButton = ({
   const rightSelected = selected === 1;
 
   useEffect(() => {
-    onChange && onChange();
+    onChange && onChange(selected);
   }, [selected]);
 
   return (

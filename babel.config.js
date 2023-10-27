@@ -14,6 +14,7 @@ module.exports = function (api) {
             components: "./src/components",
             config: "./src/config",
             graphql: "./src/graphql",
+            mocks: "./src/mocks",
             navigation: "./src/navigation",
             screens: "./src/screens",
             types: "./src/types",
