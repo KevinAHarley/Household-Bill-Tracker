@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
-import { Platform } from "react-native";
+import { Platform, ViewStyle } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 
 type BackgroundProps = {
   children: ReactNode;
+  style?: ViewStyle;
 };
 
-const Background = ({ children }: BackgroundProps) => {
+const Background = ({ children, style }: BackgroundProps) => {
   const tabBarHeight = Platform.OS === "ios" ? 120 : 90;
 
   return (
@@ -16,7 +17,7 @@ const Background = ({ children }: BackgroundProps) => {
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       locations={[0, 0.7, 1]}
-      style={{ flex: 1, paddingBottom: tabBarHeight }}
+      style={[{ flex: 1, paddingBottom: tabBarHeight }, style]}
     >
       {children}
     </LinearGradient>
