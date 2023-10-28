@@ -10,9 +10,10 @@ type ProgressBarProps = {
   goal: number;
   progress: number;
   style?: ViewStyle;
+  barStyle?: ViewStyle;
 };
 
-const ProgressBar = ({ goal, progress, style }: ProgressBarProps) => {
+const ProgressBar = ({ goal, progress, style, barStyle }: ProgressBarProps) => {
   const currentProgress = progress / goal;
   const currentProgressAsPercentage = currentProgress * 100 + "%";
   const oppositeProgress = 1 - currentProgress;
@@ -26,7 +27,7 @@ const ProgressBar = ({ goal, progress, style }: ProgressBarProps) => {
 
   return (
     <View style={style}>
-      <View style={styles.goalContainer}>
+      <View style={[styles.goalContainer, barStyle]}>
         <View style={styles.goalTextContainer}>
           {goalTextCutoff && !goalBarLengthCheck ? (
             // Margin right doesn't accept the % value in current format, needs reworked
@@ -49,6 +50,7 @@ const ProgressBar = ({ goal, progress, style }: ProgressBarProps) => {
             width: currentProgressAsPercentage,
           },
           styles.progressTextContainer,
+          barStyle,
         ]}
       >
         {progressTextCutoff && !progressBarLengthCheck ? (
