@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, ViewStyle } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -9,11 +9,13 @@ import styles from "./SeparatedProgressBar.styles";
 type SeparatedProgressBarProps = {
   goal: number;
   progress: number;
+  style?: ViewStyle;
 };
 
 const SeparatedProgressBar = ({
   goal,
   progress,
+  style,
 }: SeparatedProgressBarProps) => {
   const currentProgress = (progress / goal) * 90 + "%";
 
@@ -21,7 +23,7 @@ const SeparatedProgressBar = ({
   const progressBarLengthCheck = progress.toString().length > 4;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View style={styles.barContainer}>
         {progressBarLengthCheck && (
           <Text style={{ color: config.colors.secondary, paddingVertical: 8 }}>

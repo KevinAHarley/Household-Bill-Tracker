@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 2,
     borderColor: config.colors.secondary,
+    justifyContent: "center",
   },
   goalTextContainer: {
     flexDirection: "row-reverse",
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     overflow: "hidden",
+    justifyContent: "center",
   },
   progressText: {
     color: config.colors.text.darkGrey,
