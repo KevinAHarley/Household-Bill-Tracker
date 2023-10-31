@@ -7,6 +7,7 @@ type SwitchButtonProps = {
   leftButtonText: string;
   rightButtonText: string;
   containerStyle?: ViewStyle;
+  testID?: string;
   onChange?: (option: number) => void;
 };
 
@@ -14,6 +15,7 @@ const SwitchButton: FC<SwitchButtonProps> = ({
   leftButtonText,
   rightButtonText,
   containerStyle,
+  testID,
   onChange,
 }) => {
   const [selected, setSelected] = useState(0);
@@ -26,7 +28,7 @@ const SwitchButton: FC<SwitchButtonProps> = ({
   }, [selected]);
 
   return (
-    <View style={[styles.contentContainer, containerStyle]}>
+    <View style={[styles.contentContainer, containerStyle]} testID={testID}>
       <Pressable
         style={[leftSelected ? [styles.selectedContainer] : styles.container]}
         onPress={() => setSelected(0)}

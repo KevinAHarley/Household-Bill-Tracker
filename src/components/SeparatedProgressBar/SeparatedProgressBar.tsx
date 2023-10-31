@@ -11,12 +11,14 @@ type SeparatedProgressBarProps = {
   goal: number;
   progress: number;
   style?: ViewStyle;
+  testID?: string;
 };
 
 const SeparatedProgressBar: FC<SeparatedProgressBarProps> = ({
   goal,
   progress,
   style,
+  testID,
 }) => {
   const currentProgress = (progress / goal) * 90 + "%";
 
@@ -24,7 +26,7 @@ const SeparatedProgressBar: FC<SeparatedProgressBarProps> = ({
   const progressBarLengthCheck = progress.toString().length > 4;
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} testID={testID}>
       <View style={styles.barContainer}>
         {progressBarLengthCheck && (
           <Text style={{ color: config.colors.secondary, paddingVertical: 8 }}>

@@ -5,10 +5,11 @@ import styles from "./Divider.styles";
 
 type DividerProps = {
   style?: ViewStyle;
+  testID?: string;
 };
 
-const Divider: FC<DividerProps> = ({ style }) => {
-  return <View style={[styles.divider, style]} />;
+const Divider: FC<DividerProps> = ({ style, testID }) => {
+  return <View style={[styles.divider, style]} testID={testID} />;
 };
 
 export default Divider;

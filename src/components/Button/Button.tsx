@@ -7,10 +7,11 @@ type ButtonProps = {
   title: string;
   type?: "primary" | "secondary";
   style?: ViewStyle;
+  testID?: string;
   onPress: () => void;
 };
 
-const Button: FC<ButtonProps> = ({ title, style, type, onPress }) => {
+const Button: FC<ButtonProps> = ({ title, style, type, testID, onPress }) => {
   const primaryType = type === "primary";
 
   return (
@@ -20,6 +21,7 @@ const Button: FC<ButtonProps> = ({ title, style, type, onPress }) => {
         primaryType ? styles.primaryContainer : styles.secondaryContainer,
         style,
       ]}
+      testID={testID}
     >
       <Text style={primaryType ? styles.primaryText : styles.secondaryText}>
         {title}

@@ -31,7 +31,7 @@ const SavingsScreen: FC = () => {
           showsVerticalScrollIndicator={false}
         >
           {mockedGoals.map(({ goal, progress, id, name }) => (
-            <View id={id} style={styles.mapBarContainer}>
+            <View key={id} style={styles.mapBarContainer}>
               <Text style={styles.barText}>{name}</Text>
               <ProgressBar
                 goal={goal}

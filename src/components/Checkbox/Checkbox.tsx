@@ -10,15 +10,17 @@ import styles from "./Checkbox.styles";
 type CheckboxProps = {
   label?: string;
   size?: number;
+  testID?: string;
   onPress?: () => void;
 };
 
-const Checkbox: FC<CheckboxProps> = ({ label, size = 25, onPress }) => {
+const Checkbox: FC<CheckboxProps> = ({ label, size = 25, testID, onPress }) => {
   const [checked, setChecked] = useState(false);
 
   return (
     <View style={styles.container}>
       <Pressable
+        testID={testID}
         style={[
           {
             height: size,

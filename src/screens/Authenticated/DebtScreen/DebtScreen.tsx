@@ -29,7 +29,7 @@ const DebtScreen: FC = () => {
         contentContainerStyle={styles.scrollView}
       >
         {mockedDebt.map(({ amount, repayment, provider, id }) => (
-          <View id={id} style={styles.cardContainer}>
+          <View key={id} style={styles.cardContainer}>
             <Card
               style={styles.card}
               onPress={() =>

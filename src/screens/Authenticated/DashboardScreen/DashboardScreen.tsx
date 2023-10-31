@@ -85,7 +85,7 @@ const DashboardScreen: FC = () => {
               {dateSort(mockedBills).map((bill) => (
                 <Pressable
                   style={{ paddingRight: 12 }}
-                  id={bill.id}
+                  key={bill.id}
                   onPress={() => navigation.navigate("BillsScreen")}
                 >
                   <Text style={styles.cardDateText}>
@@ -116,10 +116,11 @@ const DashboardScreen: FC = () => {
             containerStyle={styles.switchButton}
           />
           <ScrollView showsVerticalScrollIndicator={false}>
-            {filteredBorrowing.map(({ amount, name, reason }) => (
+            {filteredBorrowing.map(({ amount, name, reason, id }) => (
               <BorrowingList
                 amount={amount}
                 name={name}
+                key={id}
                 reason={reason}
                 onPress={() => navigation.navigate("BorrowingScreen")}
               />
