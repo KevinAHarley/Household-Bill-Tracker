@@ -62,7 +62,7 @@ const BorrowingScreen: FC = () => {
               reason={reason}
               checkbox
               checked={repaid || checked.includes(id)}
-              id={id}
+              key={id}
               onCheckPress={() => borrowListSelected(id)}
             />
           )
@@ -78,7 +78,7 @@ const BorrowingScreen: FC = () => {
               reason={reason}
               checkbox
               checked={repaid || checked.includes(id)}
-              id={id}
+              key={id}
               onCheckPress={() => borrowListSelected(id)}
             />
           )

@@ -6,9 +6,10 @@ import { LinearGradient } from "expo-linear-gradient";
 type BackgroundProps = {
   children: ReactNode;
   style?: ViewStyle;
+  testID?: string;
 };
 
-const Background: FC<BackgroundProps> = ({ children, style }) => {
+const Background: FC<BackgroundProps> = ({ children, style, testID }) => {
   const tabBarHeight = Platform.OS === "ios" ? 120 : 90;
 
   return (
@@ -18,6 +19,7 @@ const Background: FC<BackgroundProps> = ({ children, style }) => {
       end={{ x: 1, y: 1 }}
       locations={[0, 0.7, 1]}
       style={[{ flex: 1, paddingBottom: tabBarHeight }, style]}
+      testID={testID}
     >
       {children}
     </LinearGradient>

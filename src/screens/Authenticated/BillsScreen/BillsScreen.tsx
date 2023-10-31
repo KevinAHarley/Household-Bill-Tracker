@@ -31,7 +31,7 @@ const BillsScreen: FC = () => {
       >
         {mockedBills.map(
           ({ amount, category, dueDate, provider, occurrence, id }) => (
-            <View style={styles.cardContainer} id={id}>
+            <View style={styles.cardContainer} key={id}>
               <Card
                 style={styles.card}
                 onPress={() =>

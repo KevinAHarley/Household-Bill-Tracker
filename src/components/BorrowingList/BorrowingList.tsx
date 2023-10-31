@@ -17,6 +17,7 @@ type BorrowingListProps = {
   id?: string;
   onPress?: () => void;
   onCheckPress?: () => void;
+  testID?: string;
 };
 
 const BorrowingList: FC<BorrowingListProps> = ({
@@ -29,6 +30,7 @@ const BorrowingList: FC<BorrowingListProps> = ({
   id,
   onPress,
   onCheckPress,
+  testID,
 }) => {
   return (
     <Pressable
@@ -38,7 +40,8 @@ const BorrowingList: FC<BorrowingListProps> = ({
           : [styles.container, style]
       }
       onPress={onPress}
-      id={id}
+      key={id}
+      testID={testID}
     >
       <View style={styles.textContainer}>
         <Text style={checked ? styles.textWithStrike : styles.text}>

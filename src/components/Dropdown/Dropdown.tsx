@@ -12,6 +12,7 @@ type DropdownProps = {
   options: string[];
   containerStyle?: ViewStyle;
   isOpen?: boolean;
+  testID?: string;
   selectedOption?: (option: string) => void;
   toggleList?: () => void;
 };
@@ -21,6 +22,7 @@ const Dropdown: FC<DropdownProps> = ({
   options,
   containerStyle,
   isOpen,
+  testID,
   selectedOption,
   toggleList,
 }) => {
@@ -35,7 +37,7 @@ const Dropdown: FC<DropdownProps> = ({
   const optionLengthCheck = options.length > 5;
 
   return (
-    <View style={containerStyle}>
+    <View style={containerStyle} testID={testID}>
       {label ? (
         <View style={styles.labelContainer}>
           <Text style={styles.labelText}>{label}</Text>
@@ -67,7 +69,7 @@ const Dropdown: FC<DropdownProps> = ({
           }
         >
           {options.map((option) => (
-            <Pressable onPress={() => setSelected(option)} id={option}>
+            <Pressable onPress={() => setSelected(option)} key={option}>
               <Text style={styles.dropdownText}>{option}</Text>
             </Pressable>
           ))}

@@ -12,6 +12,7 @@ type ProgressBarProps = {
   progress: number;
   style?: ViewStyle;
   barStyle?: ViewStyle;
+  testID?: string;
 };
 
 const ProgressBar: FC<ProgressBarProps> = ({
@@ -19,6 +20,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
   progress,
   style,
   barStyle,
+  testID,
 }) => {
   const currentProgress = progress / goal;
   const currentProgressAsPercentage = currentProgress * 100 + "%";
@@ -32,7 +34,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
   const progressBarLengthCheck = progress.toString().length > 4;
 
   return (
-    <View style={style}>
+    <View style={style} testID={testID}>
       <View style={[styles.goalContainer, barStyle]}>
         <View style={styles.goalTextContainer}>
           {goalTextCutoff && !goalBarLengthCheck ? (
