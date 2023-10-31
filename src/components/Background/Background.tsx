@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { Platform, ViewStyle } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,7 +8,7 @@ type BackgroundProps = {
   style?: ViewStyle;
 };
 
-const Background = ({ children, style }: BackgroundProps) => {
+const Background: FC<BackgroundProps> = ({ children, style }) => {
   const tabBarHeight = Platform.OS === "ios" ? 120 : 90;
 
   return (

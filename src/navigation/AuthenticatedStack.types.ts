@@ -7,12 +7,17 @@ export type locationType = {
 };
 
 export type AuthenticatedStackParamList = {
+  navigate(arg0: string): void;
   DashboardScreen: undefined;
   BillsScreen: undefined;
   BorrowingScreen: undefined;
   DebtScreen: undefined;
   SavingsScreen: undefined;
   TabNavigator: undefined;
+  BillsInputScreen: undefined;
+  BorrowingInputScreen: undefined;
+  DebtInputScreen: undefined;
+  SavingsInputScreen: undefined;
 };
 
 export type DashboardScreenRouteProp = NativeStackNavigationProp<
@@ -34,4 +39,24 @@ export type DebtScreenProp = NativeStackNavigationProp<
 export type SavingsScreenProp = NativeStackNavigationProp<
   AuthenticatedStackParamList,
   "SavingsScreen"
+>;
+
+export type BillsInputScreenProp = NativeStackNavigationProp<
+  AuthenticatedStackParamList,
+  "BillsInputScreen"
+>;
+
+export type BorrowingInputScreenProp = NativeStackNavigationProp<
+  AuthenticatedStackParamList,
+  "BorrowingInputScreen"
+>;
+
+export type DebtInputScreenProp = NativeStackNavigationProp<
+  AuthenticatedStackParamList,
+  "DebtInputScreen"
+>;
+
+export type SavingsInputScreenProp = NativeStackNavigationProp<
+  AuthenticatedStackParamList,
+  "SavingsInputScreen"
 >;

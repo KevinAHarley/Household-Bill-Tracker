@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import Icon from "@expo/vector-icons/FontAwesome5";
@@ -13,7 +13,7 @@ type CheckboxProps = {
   onPress?: () => void;
 };
 
-const Checkbox = ({ label, size = 25, onPress }: CheckboxProps) => {
+const Checkbox: FC<CheckboxProps> = ({ label, size = 25, onPress }) => {
   const [checked, setChecked] = useState(false);
 
   return (

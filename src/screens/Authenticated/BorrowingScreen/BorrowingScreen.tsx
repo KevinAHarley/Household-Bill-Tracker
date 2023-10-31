@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Text, View } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "components/Avatar";
 import Background from "components/Background";
 import BorrowingList from "components/BorrowingList";
+import Button from "components/Button";
 import SwitchButton from "components/SwitchButton";
 import mockedBorrowing from "mocks/mockedBorrowing";
+import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
 
 import styles from "./BorrowingScreen.styles";
 
-const BorrowingScreen = () => {
+const BorrowingScreen: FC = () => {
   const [switchButton, setSwitchButton] = useState(0);
   const [checked, setChecked] = useState<string[]>([]);
+  const navigation = useNavigation<AuthenticatedStackParamList>();
 
   const filteredBorrowingIncoming = mockedBorrowing
     .filter((borrowing) => borrowing.type === "Incoming")
@@ -44,11 +49,11 @@ const BorrowingScreen = () => {
       <SwitchButton
         leftButtonText="Current"
         rightButtonText="Past"
-        containerStyle={{ alignSelf: "center", marginTop: 20 }}
+        containerStyle={styles.switchButton}
         onChange={(option) => setSwitchButton(option)}
       />
       <Text style={styles.headerText}>Incoming</Text>
-      <View style={{ flex: 1 }}>
+      <View style={styles.content}>
         {filteredBorrowingIncoming.map(
           ({ amount, name, reason, id, repaid }) => (
             <BorrowingList
@@ -64,7 +69,7 @@ const BorrowingScreen = () => {
         )}
       </View>
       <Text style={styles.headerText}>Outgoing</Text>
-      <View style={{ flex: 1 }}>
+      <View style={styles.content}>
         {filteredBorrowingOutgoing.map(
           ({ amount, name, reason, id, repaid }) => (
             <BorrowingList
@@ -79,6 +84,11 @@ const BorrowingScreen = () => {
           )
         )}
       </View>
+      <Button
+        title="Add Bill"
+        type="primary"
+        onPress={() => navigation.navigate("BorrowingInputScreen")}
+      />
     </Background>
   );
 };

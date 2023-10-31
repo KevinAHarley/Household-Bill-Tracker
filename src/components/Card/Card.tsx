@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { Pressable, ViewStyle } from "react-native";
 
 import styles from "./Card.styles";
@@ -10,7 +10,7 @@ type CardProps = {
   onPress?: () => void;
 };
 
-const Card = ({ style, children, id, onPress }: CardProps) => {
+const Card: FC<CardProps> = ({ style, children, id, onPress }) => {
   return (
     <Pressable onPress={onPress} id={id} style={[styles.container, style]}>
       {children}

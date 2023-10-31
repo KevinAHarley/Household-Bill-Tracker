@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Pressable, Text, View, ViewStyle } from "react-native";
 
 import Checkbox from "components/Checkbox";
@@ -18,7 +19,7 @@ type BorrowingListProps = {
   onCheckPress?: () => void;
 };
 
-const BorrowingList = ({
+const BorrowingList: FC<BorrowingListProps> = ({
   amount,
   name,
   reason,
@@ -28,7 +29,7 @@ const BorrowingList = ({
   id,
   onPress,
   onCheckPress,
-}: BorrowingListProps) => {
+}) => {
   return (
     <Pressable
       style={

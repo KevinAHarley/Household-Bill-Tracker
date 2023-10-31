@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Text, View, ViewStyle } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -13,7 +14,12 @@ type ProgressBarProps = {
   barStyle?: ViewStyle;
 };
 
-const ProgressBar = ({ goal, progress, style, barStyle }: ProgressBarProps) => {
+const ProgressBar: FC<ProgressBarProps> = ({
+  goal,
+  progress,
+  style,
+  barStyle,
+}) => {
   const currentProgress = progress / goal;
   const currentProgressAsPercentage = currentProgress * 100 + "%";
   const oppositeProgress = 1 - currentProgress;

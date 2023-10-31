@@ -19,6 +19,13 @@ const styles = StyleSheet.create({
     color: config.colors.secondary,
     fontSize: 24,
   },
+  switchButton: {
+    alignSelf: "center",
+    marginTop: 20,
+  },
+  content: {
+    flex: 1,
+  },
 });
 
 export default styles;

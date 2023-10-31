@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Pressable, Text, View, ViewStyle } from "react-native";
+import { FC, useEffect, useState } from "react";
+import { Pressable, ScrollView, Text, View, ViewStyle } from "react-native";
 
 import Icon from "@expo/vector-icons/FontAwesome5";
 
@@ -11,23 +11,28 @@ type DropdownProps = {
   label?: string;
   options: string[];
   containerStyle?: ViewStyle;
+  isOpen?: boolean;
   selectedOption?: (option: string) => void;
+  toggleList?: () => void;
 };
 
-const Dropdown = ({
+const Dropdown: FC<DropdownProps> = ({
   label,
   options,
   containerStyle,
+  isOpen,
   selectedOption,
-}: DropdownProps) => {
+  toggleList,
+}) => {
   const [selected, setSelected] = useState<string | undefined>(undefined);
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (selected) {
       selectedOption(selected);
     }
   }, [selected]);
+
+  const optionLengthCheck = options.length > 5;
 
   return (
     <View style={containerStyle}>
@@ -38,34 +43,35 @@ const Dropdown = ({
       ) : undefined}
       <Pressable
         style={
-          open ? [styles.container, styles.openContainer] : styles.container
+          isOpen ? [styles.container, styles.openContainer] : styles.container
         }
-        onPress={() => setOpen(!open)}
+        onPress={toggleList}
       >
         <Text style={styles.inputText}>
           {selected ? selected : "Select..."}
         </Text>
         <Icon
           size={20}
-          name={open ? "chevron-up" : "chevron-down"}
+          name={isOpen ? "chevron-up" : "chevron-down"}
           style={styles.icon}
           color={config.colors.secondary}
         />
       </Pressable>
-      {open ? (
-        <View style={styles.dropdownContainer}>
+      {isOpen ? (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={
+            optionLengthCheck
+              ? styles.extendedDropdownContainer
+              : styles.dropdownContainer
+          }
+        >
           {options.map((option) => (
-            <Pressable
-              onPress={() => {
-                setSelected(option);
-                setOpen(false);
-              }}
-              id={option}
-            >
+            <Pressable onPress={() => setSelected(option)} id={option}>
               <Text style={styles.dropdownText}>{option}</Text>
             </Pressable>
           ))}
-        </View>
+        </ScrollView>
       ) : null}
     </View>
   );
