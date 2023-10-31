@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { View, ViewStyle } from "react-native";
 
 import styles from "./Divider.styles";
@@ -6,7 +7,7 @@ type DividerProps = {
   style?: ViewStyle;
 };
 
-const Divider = ({ style }: DividerProps) => {
+const Divider: FC<DividerProps> = ({ style }) => {
   return <View style={[styles.divider, style]} />;
 };
 

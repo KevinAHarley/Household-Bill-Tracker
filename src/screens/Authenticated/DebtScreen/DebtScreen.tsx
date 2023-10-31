@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "components/Avatar";
 import Background from "components/Background";
@@ -7,12 +9,13 @@ import Button from "components/Button";
 import Card from "components/Card";
 import ProgressBar from "components/ProgressBar";
 import mockedDebt from "mocks/mockedDebt";
+import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
 
 import styles from "./DebtScreen.styles";
 
-const DebtScreen = () => {
+const DebtScreen: FC = () => {
   const [selected, setSelected] = useState<string>("");
-
+  const navigation = useNavigation<AuthenticatedStackParamList>();
   return (
     <Background style={styles.container}>
       <View style={styles.headerContainer}>
@@ -47,7 +50,11 @@ const DebtScreen = () => {
           </View>
         ))}
       </ScrollView>
-      <Button title="Add" type="primary" onPress={() => null} />
+      <Button
+        title="Add"
+        type="primary"
+        onPress={() => navigation.navigate("DebtInputScreen")}
+      />
     </Background>
   );
 };

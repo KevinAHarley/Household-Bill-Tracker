@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
@@ -21,7 +21,7 @@ import dateSort from "utils/dateSort";
 
 import styles from "./DashboardScreen.styles";
 
-const DashboardScreen = () => {
+const DashboardScreen: FC = () => {
   const [switchButton, setSwitchButton] = useState(0);
   const navigation = useNavigation<DashboardScreenRouteProp>();
 

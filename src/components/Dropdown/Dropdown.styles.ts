@@ -45,6 +45,15 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
+  extendedDropdownContainer: {
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderWidth: 3,
+    borderColor: config.colors.primary,
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    height: 150,
+  },
   dropdownText: {
     color: config.colors.secondary,
     paddingHorizontal: 16,

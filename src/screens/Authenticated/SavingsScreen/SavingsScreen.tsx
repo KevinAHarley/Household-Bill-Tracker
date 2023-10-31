@@ -1,4 +1,7 @@
+import { FC } from "react";
 import { ScrollView, Text, View } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "components/Avatar";
 import Background from "components/Background";
@@ -6,10 +9,12 @@ import Button from "components/Button";
 import ProgressBar from "components/ProgressBar";
 import SeparatedProgressBar from "components/SeparatedProgressBar";
 import mockedGoals from "mocks/mockedGoals";
+import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
 
 import styles from "./SavingsScreen.styles";
 
-const SavingsScreen = () => {
+const SavingsScreen: FC = () => {
+  const navigation = useNavigation<AuthenticatedStackParamList>();
   const goalLengthCheck = mockedGoals.length > 1;
 
   return (
@@ -57,7 +62,7 @@ const SavingsScreen = () => {
           title="Add"
           style={styles.addButton}
           type="primary"
-          onPress={() => null}
+          onPress={() => navigation.navigate("SavingsInputScreen")}
         />
       </View>
     </Background>

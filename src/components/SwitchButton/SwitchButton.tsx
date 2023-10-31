@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Pressable, Text, View, ViewStyle } from "react-native";
 
 import styles from "./SwitchButton.styles";
@@ -10,12 +10,12 @@ type SwitchButtonProps = {
   onChange?: (option: number) => void;
 };
 
-const SwitchButton = ({
+const SwitchButton: FC<SwitchButtonProps> = ({
   leftButtonText,
   rightButtonText,
   containerStyle,
   onChange,
-}: SwitchButtonProps) => {
+}) => {
   const [selected, setSelected] = useState(0);
 
   const leftSelected = selected === 0;

@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
   raisedIcon: {
     marginBottom: 24,
   },
+  headerText: {
+    color: config.colors.secondary,
+    fontSize: 20,
+    marginLeft: 16,
+  },
 });
 
 export default styles;
