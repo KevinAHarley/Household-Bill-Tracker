@@ -1,51 +1,112 @@
 import { FC, useState } from "react";
 import { ScrollView } from "react-native";
 
+import { Controller, useForm } from "react-hook-form";
+
 import Background from "components/Background";
 import Button from "components/Button";
 import Dropdown from "components/Dropdown";
 import { TextInput } from "components/TextInput/TextInput";
 
 import styles from "./BorrowingInputScreen.styles";
+import { rules } from "./form";
 
 const BorrowingInputScreen: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const typeOptions = ["Incoming", "Outgoing"];
 
+  const defaultValues = {
+    name: "",
+    amount: 0,
+    category: "",
+    reason: "",
+  };
+
+  const {
+    control,
+    formState: { isDirty, isValid },
+  } = useForm({
+    defaultValues,
+    mode: "onBlur",
+  });
+
+  const disableButton = !isDirty || !isValid;
+
   return (
     <Background style={styles.background}>
       <ScrollView style={styles.container}>
-        <TextInput
-          onChange={() => null}
-          value={undefined}
-          placeHolder="..."
-          label="Name"
-          containerStyle={styles.input}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.name}
+          rules={rules.name}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              placeHolder="..."
+              label="Name"
+              containerStyle={styles.input}
+            />
+          )}
+          name="name"
         />
-        <TextInput
-          onChange={() => null}
-          value={0}
-          keyboardType="numeric"
-          placeHolder="..."
-          label="Amount"
-          containerStyle={styles.input}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.amount}
+          rules={rules.amount}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              keyboardType="numeric"
+              placeHolder="..."
+              label="Amount"
+              containerStyle={styles.input}
+            />
+          )}
+          name="amount"
         />
-        <Dropdown
-          label="Category"
-          options={typeOptions}
-          containerStyle={styles.input}
-          isOpen={isOpen}
-          toggleList={() => setIsOpen(!isOpen)}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.name}
+          rules={rules.name}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Dropdown
+              value={value}
+              label="Category"
+              options={typeOptions}
+              containerStyle={styles.input}
+              isOpen={isOpen}
+              toggleList={() => setIsOpen(!isOpen)}
+            />
+          )}
+          name="name"
         />
-        <TextInput
-          onChange={() => null}
-          value={undefined}
-          placeHolder="..."
-          label="Reason"
-          containerStyle={styles.input}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.reason}
+          rules={rules.reason}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              placeHolder="..."
+              label="Reason"
+              containerStyle={styles.input}
+            />
+          )}
+          name="reason"
         />
       </ScrollView>
-      <Button title="Add" type="primary" onPress={() => null} />
+      <Button
+        title="Add"
+        type="primary"
+        onPress={() => null}
+        disabled={disableButton}
+      />
     </Background>
   );
 };
