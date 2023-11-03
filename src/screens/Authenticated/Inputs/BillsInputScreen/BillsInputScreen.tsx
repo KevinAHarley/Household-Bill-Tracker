@@ -1,15 +1,35 @@
 import { FC, useState } from "react";
 import { ScrollView } from "react-native";
 
+import { Controller, useForm } from "react-hook-form";
+
 import Background from "components/Background";
 import Button from "components/Button";
 import Dropdown from "components/Dropdown";
 import { TextInput } from "components/TextInput/TextInput";
 
 import styles from "./BillsInputScreen.styles";
+import { rules } from "./form";
 
 const BillsInputScreen: FC = () => {
   const [openList, setOpenList] = useState<string | null>(null);
+
+  const defaultValues = {
+    provider: "",
+    price: 0,
+    date: "",
+    occurrence: "",
+    category: "",
+  };
+
+  const {
+    control,
+    formState: { isDirty, isValid },
+  } = useForm({
+    defaultValues,
+    mode: "onBlur",
+  });
+
   const categoryOptions = ["Food", "Transportation", "Entertainment", "Other"];
   const occurrenceOptions = ["Weekly", "Monthly", "Yearly"];
   const dateOptions = [
@@ -54,47 +74,102 @@ const BillsInputScreen: FC = () => {
     }
   };
 
+  const disableButton = !isDirty || !isValid;
+
   return (
     <Background style={styles.background}>
       <ScrollView style={styles.container}>
-        <TextInput
-          onChange={() => null}
-          value={undefined}
-          placeHolder="..."
-          label="Provider"
-          containerStyle={styles.input}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.provider}
+          rules={rules.provider}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              placeHolder="..."
+              label="Provider"
+              containerStyle={styles.input}
+            />
+          )}
+          name="provider"
         />
-        <TextInput
-          onChange={() => null}
-          value={0}
-          keyboardType="numeric"
-          placeHolder="..."
-          label="Price"
-          containerStyle={styles.input}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.price}
+          rules={rules.price}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              keyboardType="numeric"
+              placeHolder="..."
+              label="Price"
+              containerStyle={styles.input}
+            />
+          )}
+          name="price"
         />
-        <Dropdown
-          label="Date"
-          options={dateOptions}
-          containerStyle={styles.input}
-          isOpen={openList === "date"}
-          toggleList={() => toggleList("date")}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.date}
+          rules={rules.date}
+          render={({ field: { onChange, value } }) => (
+            <Dropdown
+              label="Date"
+              value={value}
+              onChange={onChange}
+              options={dateOptions}
+              containerStyle={styles.input}
+              isOpen={openList === "date"}
+              toggleList={() => toggleList("date")}
+            />
+          )}
+          name="date"
         />
-        <Dropdown
-          label="Occurrence"
-          options={occurrenceOptions}
-          containerStyle={styles.input}
-          isOpen={openList === "occurrence"}
-          toggleList={() => toggleList("occurrence")}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.occurrence}
+          rules={rules.occurrence}
+          render={({ field: { onChange, value } }) => (
+            <Dropdown
+              label="Occurrence"
+              value={value}
+              onChange={onChange}
+              options={occurrenceOptions}
+              containerStyle={styles.input}
+              isOpen={openList === "occurrence"}
+              toggleList={() => toggleList("occurrence")}
+            />
+          )}
+          name="occurrence"
         />
-        <Dropdown
-          label="Category"
-          options={categoryOptions}
-          containerStyle={styles.input}
-          isOpen={openList === "category"}
-          toggleList={() => toggleList("category")}
+        <Controller
+          control={control}
+          defaultValue={defaultValues.category}
+          rules={rules.category}
+          render={({ field: { onChange, value } }) => (
+            <Dropdown
+              label="Category"
+              value={value}
+              onChange={onChange}
+              options={categoryOptions}
+              containerStyle={styles.input}
+              isOpen={openList === "category"}
+              toggleList={() => toggleList("category")}
+            />
+          )}
+          name="category"
         />
       </ScrollView>
-      <Button title="Add" type="primary" onPress={() => null} />
+      <Button
+        title="Add"
+        type="primary"
+        onPress={() => null}
+        disabled={disableButton}
+      />
     </Background>
   );
 };

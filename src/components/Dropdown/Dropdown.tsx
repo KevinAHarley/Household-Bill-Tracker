@@ -8,12 +8,13 @@ import config from "config";
 import styles from "./Dropdown.styles";
 
 type DropdownProps = {
-  label?: string;
+  value: string;
   options: string[];
+  label?: string;
   containerStyle?: ViewStyle;
   isOpen?: boolean;
   testID?: string;
-  selectedOption?: (option: string) => void;
+  onChange?: (value: string) => void;
   toggleList?: () => void;
 };
 
@@ -23,14 +24,14 @@ const Dropdown: FC<DropdownProps> = ({
   containerStyle,
   isOpen,
   testID,
-  selectedOption,
+  onChange,
   toggleList,
 }) => {
   const [selected, setSelected] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (selected) {
-      selectedOption(selected);
+      onChange(selected);
     }
   }, [selected]);
 
