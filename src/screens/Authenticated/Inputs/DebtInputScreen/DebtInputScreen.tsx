@@ -8,15 +8,9 @@ import Button from "components/Button";
 import { TextInput } from "components/TextInput/TextInput";
 
 import styles from "./DebtInputScreen.styles";
-import { rules } from "./form";
+import { defaultValues, rules } from "./form";
 
 const DebtInputScreen: FC = () => {
-  const defaultValues = {
-    provider: "",
-    owed: 0,
-    paid: 0,
-  };
-
   const {
     control,
     formState: { isDirty, isValid },

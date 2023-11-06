@@ -34,3 +34,11 @@ export const rules = {
     },
   },
 };
+
+export const defaultValues = {
+  provider: "",
+  price: "",
+  date: "",
+  occurrence: "",
+  category: "",
+};

@@ -7,20 +7,13 @@ import Background from "components/Background";
 import Button from "components/Button";
 import Dropdown from "components/Dropdown";
 import { TextInput } from "components/TextInput/TextInput";
+import toggleDropDownList from "utils/toggleDropDownList";
 
 import styles from "./BillsInputScreen.styles";
-import { rules } from "./form";
+import { defaultValues, rules } from "./form";
 
 const BillsInputScreen: FC = () => {
   const [openList, setOpenList] = useState<string | null>(null);
-
-  const defaultValues = {
-    provider: "",
-    price: 0,
-    date: "",
-    occurrence: "",
-    category: "",
-  };
 
   const {
     control,
@@ -65,14 +58,6 @@ const BillsInputScreen: FC = () => {
     "30th",
     "31st",
   ];
-
-  const toggleList = (listTitle: string) => {
-    if (openList === listTitle) {
-      setOpenList(null);
-    } else {
-      setOpenList(listTitle);
-    }
-  };
 
   const disableButton = !isDirty || !isValid;
 
@@ -124,7 +109,9 @@ const BillsInputScreen: FC = () => {
               options={dateOptions}
               containerStyle={styles.input}
               isOpen={openList === "date"}
-              toggleList={() => toggleList("date")}
+              toggleList={() =>
+                toggleDropDownList("date", openList, setOpenList)
+              }
             />
           )}
           name="date"
@@ -141,7 +128,9 @@ const BillsInputScreen: FC = () => {
               options={occurrenceOptions}
               containerStyle={styles.input}
               isOpen={openList === "occurrence"}
-              toggleList={() => toggleList("occurrence")}
+              toggleList={() =>
+                toggleDropDownList("occurrence", openList, setOpenList)
+              }
             />
           )}
           name="occurrence"
@@ -158,7 +147,9 @@ const BillsInputScreen: FC = () => {
               options={categoryOptions}
               containerStyle={styles.input}
               isOpen={openList === "category"}
-              toggleList={() => toggleList("category")}
+              toggleList={() =>
+                toggleDropDownList("category", openList, setOpenList)
+              }
             />
           )}
           name="category"

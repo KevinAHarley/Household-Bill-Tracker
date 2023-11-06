@@ -4,11 +4,11 @@ import config from "config";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
     paddingHorizontal: 16,
     paddingTop: 16,
+    paddingBottom: 16,
   },
   headerContainer: {
     flexDirection: "row",
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     paddingTop: 16,
   },
   progressContainer: {
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
     paddingTop: 32,
@@ -80,7 +79,6 @@ const styles = StyleSheet.create({
   },
   borrowingContainer: {
     flex: 1,
-    paddingTop: 16,
   },
   switchButton: {
     justifyContent: "center",

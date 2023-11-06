@@ -7,16 +7,10 @@ import Background from "components/Background";
 import Button from "components/Button";
 import { TextInput } from "components/TextInput/TextInput";
 
-import { rules } from "./form";
+import { defaultValues, rules } from "./form";
 import styles from "./SavingsInputScreen.styles";
 
 const SavingsInputScreen: FC = () => {
-  const defaultValues = {
-    name: "",
-    goal: 0,
-    progress: 0,
-  };
-
   const {
     control,
     formState: { isDirty, isValid },

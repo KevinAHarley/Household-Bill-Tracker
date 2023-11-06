@@ -70,7 +70,13 @@ const Dropdown: FC<DropdownProps> = ({
           }
         >
           {options.map((option) => (
-            <Pressable onPress={() => setSelected(option)} key={option}>
+            <Pressable
+              onPress={() => {
+                setSelected(option);
+                toggleList();
+              }}
+              key={option}
+            >
               <Text style={styles.dropdownText}>{option}</Text>
             </Pressable>
           ))}

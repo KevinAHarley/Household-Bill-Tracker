@@ -9,18 +9,11 @@ import Dropdown from "components/Dropdown";
 import { TextInput } from "components/TextInput/TextInput";
 
 import styles from "./BorrowingInputScreen.styles";
-import { rules } from "./form";
+import { defaultValues, rules } from "./form";
 
 const BorrowingInputScreen: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const typeOptions = ["Incoming", "Outgoing"];
-
-  const defaultValues = {
-    name: "",
-    amount: 0,
-    category: "",
-    reason: "",
-  };
 
   const {
     control,
@@ -70,11 +63,12 @@ const BorrowingInputScreen: FC = () => {
         />
         <Controller
           control={control}
-          defaultValue={defaultValues.name}
-          rules={rules.name}
-          render={({ field: { onChange, onBlur, value } }) => (
+          defaultValue={defaultValues.category}
+          rules={rules.category}
+          render={({ field: { onChange, value } }) => (
             <Dropdown
               value={value}
+              onChange={onChange}
               label="Category"
               options={typeOptions}
               containerStyle={styles.input}
@@ -82,7 +76,7 @@ const BorrowingInputScreen: FC = () => {
               toggleList={() => setIsOpen(!isOpen)}
             />
           )}
-          name="name"
+          name="category"
         />
         <Controller
           control={control}

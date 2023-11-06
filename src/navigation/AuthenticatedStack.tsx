@@ -58,7 +58,7 @@ const AuthenticatedStack = () => {
         component={BorrowingInputScreen}
         options={{
           headerTransparent: true,
-          headerTitle: "Add New Bill",
+          headerTitle: "Add New Borrowing",
           headerTitleStyle: styles.headerText,
           headerLeft: () => (
             <Icon
@@ -76,7 +76,7 @@ const AuthenticatedStack = () => {
         component={DebtInputScreen}
         options={{
           headerTransparent: true,
-          headerTitle: "Add New Bill",
+          headerTitle: "Add New Debt",
           headerTitleStyle: styles.headerText,
           headerLeft: () => (
             <Icon
@@ -94,7 +94,7 @@ const AuthenticatedStack = () => {
         component={SavingsInputScreen}
         options={{
           headerTransparent: true,
-          headerTitle: "Add New Bill",
+          headerTitle: "Add New Goal",
           headerTitleStyle: styles.headerText,
           headerLeft: () => (
             <Icon

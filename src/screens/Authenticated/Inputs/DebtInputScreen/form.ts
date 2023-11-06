@@ -26,3 +26,9 @@ export const rules = {
     },
   },
 };
+
+export const defaultValues = {
+  provider: "",
+  owed: "",
+  paid: "",
+};
