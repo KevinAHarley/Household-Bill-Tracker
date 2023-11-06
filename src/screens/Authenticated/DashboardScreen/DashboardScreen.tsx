@@ -59,7 +59,6 @@ const DashboardScreen: FC = () => {
           </View>
           <Avatar initials="KH" size="S" />
         </View>
-        <Text style={styles.goalText}>Your Goals</Text>
         <View style={styles.progressContainer}>
           <Pressable
             style={styles.progressBarContainer}
