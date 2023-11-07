@@ -35,23 +35,11 @@ const styles = StyleSheet.create({
     flex: 3,
     marginLeft: 16,
   },
-  editButton: {
-    width: 88,
-    height: 88,
-    marginLeft: 10,
-  },
   barContainer: {
     flex: 1,
   },
-  mapBarContainer: {
-    paddingBottom: 32,
-  },
   separateBar: {
     paddingVertical: 64,
-  },
-  barStyle: {
-    height: 50,
-    borderRadius: 25,
   },
 });
 
