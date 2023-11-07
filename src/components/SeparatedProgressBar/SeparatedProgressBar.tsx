@@ -29,9 +29,7 @@ const SeparatedProgressBar: FC<SeparatedProgressBarProps> = ({
     <View style={[styles.container, style]} testID={testID}>
       <View style={styles.barContainer}>
         {progressBarLengthCheck && (
-          <Text style={{ color: config.colors.secondary, paddingVertical: 8 }}>
-            £{progress}
-          </Text>
+          <Text style={styles.progressText}>£{progress}</Text>
         )}
         <LinearGradient
           colors={[config.colors.teal, config.colors.lightBlue]}
@@ -43,22 +41,14 @@ const SeparatedProgressBar: FC<SeparatedProgressBarProps> = ({
           ]}
         >
           {!progressBarLengthCheck && (
-            <Text style={{ color: config.colors.text.darkGrey }}>
-              £{progress}
-            </Text>
+            <Text style={styles.barProgressText}>£{progress}</Text>
           )}
         </LinearGradient>
       </View>
       <View style={styles.barContainer}>
-        {goalBarLengthCheck && (
-          <Text style={{ color: config.colors.secondary, paddingVertical: 8 }}>
-            £{goal}
-          </Text>
-        )}
+        {goalBarLengthCheck && <Text style={styles.barGoalText}>£{goal}</Text>}
         <View style={styles.goalContainer}>
-          {!goalBarLengthCheck && (
-            <Text style={{ color: config.colors.secondary }}>£{goal}</Text>
-          )}
+          {!goalBarLengthCheck && <Text style={styles.goalText}>£{goal}</Text>}
         </View>
       </View>
     </View>

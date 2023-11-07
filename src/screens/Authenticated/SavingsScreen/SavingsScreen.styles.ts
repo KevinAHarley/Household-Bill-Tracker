@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
   separateBar: {
     paddingVertical: 64,
   },
+  flatList: {
+    flexGrow: 1,
+  },
 });
 
 export default styles;

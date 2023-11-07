@@ -29,7 +29,7 @@ const SavingsScreen: FC = () => {
       {goalLengthCheck ? (
         <FlatList
           data={mockedGoals}
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={styles.flatList}
           ListEmptyComponent={<FlatListEmptyComponent text="a goal" />}
           renderItem={({ item, index }) => (
             <SavingsFlatListRender item={item} index={index} />
