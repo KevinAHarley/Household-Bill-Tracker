@@ -65,17 +65,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingTop: 16,
     paddingBottom: 32,
-    justifyContent: "space-evenly",
-  },
-  cardText: {
-    fontSize: 18,
-    color: config.colors.secondary,
-  },
-  cardDateText: {
-    alignSelf: "center",
-    fontSize: 20,
-    color: config.colors.secondary,
-    paddingBottom: 8,
   },
   borrowingContainer: {
     flex: 1,
@@ -83,6 +72,12 @@ const styles = StyleSheet.create({
   switchButton: {
     justifyContent: "center",
     paddingVertical: 16,
+  },
+  sectionList: {
+    flexGrow: 1,
+  },
+  potato: {
+    flexGrow: 1,
   },
 });
 

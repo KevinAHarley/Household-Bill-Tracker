@@ -1,14 +1,13 @@
 import { FC, useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-import moment from "moment";
 
 import Avatar from "components/Avatar";
 import Background from "components/Background";
 import BorrowingList from "components/BorrowingList";
-import Card from "components/Card";
+import DashboardBillsFlatListRender from "components/FlatListRenders/DashboardBillsFlatListRender";
 import ProgressBar from "components/ProgressBar";
 import SwitchButton from "components/SwitchButton";
 import mockedBills from "mocks/mockedBills";
@@ -17,7 +16,6 @@ import mockedDebt from "mocks/mockedDebt";
 import mockedGoals from "mocks/mockedGoals";
 import mockedUser from "mocks/mockedUser";
 import { DashboardScreenRouteProp } from "navigation/AuthenticatedStack.types";
-import dateSort from "utils/dateSort";
 
 import styles from "./DashboardScreen.styles";
 
@@ -79,32 +77,15 @@ const DashboardScreen: FC = () => {
       <View style={styles.contentContainer}>
         <View style={styles.upcomingPaymentContainer}>
           <Text style={styles.contentHeaderText}>Upcoming Payments</Text>
-          <View style={styles.cardContainer}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {dateSort(mockedBills).map((bill) => (
-                <Pressable
-                  style={{ paddingRight: 12 }}
-                  key={bill.id}
-                  onPress={() => navigation.navigate("BillsScreen")}
-                >
-                  <Text style={styles.cardDateText}>
-                    {moment(bill.dueDate).format("Do MMM")}
-                  </Text>
-                  <Card style={styles.card}>
-                    <Text style={styles.cardText} numberOfLines={1}>
-                      {bill.provider}
-                    </Text>
-                    <Text style={styles.cardText} numberOfLines={1}>
-                      £{bill.amount}
-                    </Text>
-                    <Text style={styles.cardText} numberOfLines={1}>
-                      {bill.category}
-                    </Text>
-                  </Card>
-                </Pressable>
-              ))}
-            </ScrollView>
-          </View>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.cardContainer}
+            data={mockedBills}
+            renderItem={({ item, index }) => (
+              <DashboardBillsFlatListRender item={item} index={index} />
+            )}
+          />
         </View>
         <View style={styles.borrowingContainer}>
           <Text style={styles.contentHeaderText}>Borrowing</Text>
@@ -114,17 +95,21 @@ const DashboardScreen: FC = () => {
             onChange={(option) => setSwitchButton(option)}
             containerStyle={styles.switchButton}
           />
-          <ScrollView showsVerticalScrollIndicator={false}>
-            {filteredBorrowing.map(({ amount, name, reason, id }) => (
-              <BorrowingList
-                amount={amount}
-                name={name}
-                key={id}
-                reason={reason}
-                onPress={() => navigation.navigate("BorrowingScreen")}
-              />
-            ))}
-          </ScrollView>
+          <FlatList
+            data={filteredBorrowing}
+            contentContainerStyle={styles.sectionList}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item, index }) => (
+              <Pressable onPress={() => navigation.navigate("BorrowingScreen")}>
+                <BorrowingList
+                  amount={item.amount}
+                  name={item.name}
+                  reason={item.reason}
+                  key={index}
+                />
+              </Pressable>
+            )}
+          />
         </View>
       </View>
     </Background>
