@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
 import Avatar from "components/Avatar";
 import Background from "components/Background";
 import Button from "components/Button";
-import Card from "components/Card";
-import ProgressBar from "components/ProgressBar";
+import FlatListEmptyComponent from "components/FlatListEmptyComponent";
+import DebtFlatListRender from "components/FlatListRenders/DebtFlatListRender/DebtFlatListRender";
 import mockedDebt from "mocks/mockedDebt";
 import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
 
@@ -24,32 +24,21 @@ const DebtScreen: FC = () => {
         </View>
         <Avatar initials="KH" size="S" />
       </View>
-      <ScrollView
+      <FlatList
+        contentContainerStyle={styles.flatListContainer}
+        data={mockedDebt}
+        renderItem={({ item, index }) => (
+          <DebtFlatListRender
+            state={selected}
+            setState={setSelected}
+            item={item}
+            index={index}
+          />
+        )}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollView}
-      >
-        {mockedDebt.map(({ amount, repayment, provider, id }) => (
-          <View key={id} style={styles.cardContainer}>
-            <Card
-              style={styles.card}
-              onPress={() =>
-                selected === id ? setSelected("") : setSelected(id)
-              }
-            >
-              <Text style={styles.providerText}>{provider}</Text>
-              <ProgressBar goal={amount} progress={repayment} />
-            </Card>
-            {selected === id && (
-              <Button
-                title="Edit"
-                type="secondary"
-                onPress={() => null}
-                style={styles.editButton}
-              />
-            )}
-          </View>
-        ))}
-      </ScrollView>
+        keyExtractor={(item) => item.id}
+        ListEmptyComponent={<FlatListEmptyComponent text="a new debt" />}
+      />
       <Button
         title="Add"
         type="primary"
