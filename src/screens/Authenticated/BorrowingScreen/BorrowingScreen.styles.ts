@@ -26,6 +26,16 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
+  sectionList: {
+    flexGrow: 1,
+    paddingBottom: 16,
+  },
+  sectionListHeaderTop: {
+    paddingVertical: 16,
+  },
+  sectionListHeader: {
+    paddingVertical: 32,
+  },
 });
 
 export default styles;
