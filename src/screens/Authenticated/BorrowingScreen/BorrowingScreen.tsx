@@ -96,6 +96,7 @@ const BorrowingScreen: FC = () => {
         ListEmptyComponent={<FlatListEmptyComponent text="a new bill" />}
       />
       <Button
+        style={styles.addButton}
         title="Add Bill"
         type="primary"
         onPress={() => navigation.navigate("BorrowingInputScreen")}

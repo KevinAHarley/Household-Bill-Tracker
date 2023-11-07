@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   flatListContainer: {
     flexGrow: 1,
   },
+  addButton: {
+    marginTop: 16,
+  },
 });
 
 export default styles;

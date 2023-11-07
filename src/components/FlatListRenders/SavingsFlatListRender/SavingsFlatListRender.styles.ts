@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   },
   barStyle: {
     height: 50,
-    borderRadius: 25,
   },
 });
 

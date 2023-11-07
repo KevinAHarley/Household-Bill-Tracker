@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
   sectionListHeader: {
     paddingVertical: 32,
   },
+  addButton: {
+    marginTop: 16,
+  },
 });
 
 export default styles;

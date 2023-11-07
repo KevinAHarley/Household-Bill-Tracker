@@ -24,10 +24,12 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     flex: 1,
+    marginTop: 16,
   },
   addButton: {
     flex: 3,
     marginLeft: 16,
+    marginTop: 16,
   },
   flatList: {
     flexGrow: 1,

@@ -40,6 +40,7 @@ const DebtScreen: FC = () => {
         ListEmptyComponent={<FlatListEmptyComponent text="a new debt" />}
       />
       <Button
+        style={styles.addButton}
         title="Add"
         type="primary"
         onPress={() => navigation.navigate("DebtInputScreen")}
