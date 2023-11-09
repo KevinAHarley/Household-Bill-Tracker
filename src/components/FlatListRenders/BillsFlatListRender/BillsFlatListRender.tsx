@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
+import Animated, { useSharedValue, withTiming } from "react-native-reanimated";
 
 import Button from "components/Button";
 import Card from "components/Card";
@@ -31,14 +32,20 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
   setSelected,
 }) => {
   const navigation = useNavigation<DebtScreenProp>();
+  const width = useSharedValue(0);
+
+  const toggleWidth = () => {
+    width.value = withTiming(width.value === 0 ? 88 : 0);
+  };
 
   return (
     <View style={styles.cardContainer} key={index}>
       <Card
         style={styles.card}
-        onPress={() =>
-          selected === item.id ? setSelected("") : setSelected(item.id)
-        }
+        onPress={() => {
+          selected === item.id ? setSelected("") : setSelected(item.id);
+          toggleWidth();
+        }}
       >
         <View style={styles.cardTopTextContainer}>
           <Text style={styles.cardTopText} numberOfLines={1}>
@@ -55,7 +62,7 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
           </Text>
         </View>
       </Card>
-      {selected === item.id && (
+      <Animated.View style={{ width: width }}>
         <Button
           title="Edit"
           type="secondary"
@@ -64,7 +71,7 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
           }
           style={styles.editButton}
         />
-      )}
+      </Animated.View>
     </View>
   );
 };
