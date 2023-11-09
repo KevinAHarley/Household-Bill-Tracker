@@ -10,14 +10,14 @@ import Button from "components/Button";
 import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import SwitchButton from "components/SwitchButton";
 import mockedBorrowing from "mocks/mockedBorrowing";
-import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
+import { BorrowingScreenProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./BorrowingScreen.styles";
 
 const BorrowingScreen: FC = () => {
   const [switchButton, setSwitchButton] = useState(0);
   const [checked, setChecked] = useState<string[]>([]);
-  const navigation = useNavigation<AuthenticatedStackParamList>();
+  const navigation = useNavigation<BorrowingScreenProp>();
 
   const filteredBorrowingIncoming = mockedBorrowing
     .filter((borrowing) => borrowing.type === "Incoming")

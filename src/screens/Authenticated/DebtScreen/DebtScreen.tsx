@@ -9,13 +9,14 @@ import Button from "components/Button";
 import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import DebtFlatListRender from "components/FlatListRenders/DebtFlatListRender/DebtFlatListRender";
 import mockedDebt from "mocks/mockedDebt";
-import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
+import { DebtScreenProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./DebtScreen.styles";
 
 const DebtScreen: FC = () => {
   const [selected, setSelected] = useState<string>("");
-  const navigation = useNavigation<AuthenticatedStackParamList>();
+  const navigation = useNavigation<DebtScreenProp>();
+
   return (
     <Background style={styles.container}>
       <View style={styles.avatarContainer}>
@@ -26,8 +27,8 @@ const DebtScreen: FC = () => {
         data={mockedDebt}
         renderItem={({ item, index }) => (
           <DebtFlatListRender
-            state={selected}
-            setState={setSelected}
+            selected={selected}
+            setSelected={setSelected}
             item={item}
             index={index}
           />

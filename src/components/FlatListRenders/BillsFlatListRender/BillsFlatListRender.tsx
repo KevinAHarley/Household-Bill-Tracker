@@ -1,10 +1,12 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Text, View } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 
 import Button from "components/Button";
 import Card from "components/Card";
+import { DebtScreenProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./BillsFlatListRender.styles";
 
@@ -18,10 +20,17 @@ type BillsFlatListRenderProps = {
     category: string;
     occurrence: string;
   };
+  selected: string;
+  setSelected: (value: string) => void;
 };
 
-const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({ item, index }) => {
-  const [selected, setSelected] = useState<string>("");
+const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
+  item,
+  index,
+  selected,
+  setSelected,
+}) => {
+  const navigation = useNavigation<DebtScreenProp>();
 
   return (
     <View style={styles.cardContainer} key={index}>
@@ -50,7 +59,9 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({ item, index }) => {
         <Button
           title="Edit"
           type="secondary"
-          onPress={() => null}
+          onPress={() =>
+            navigation.navigate("BillsInputScreen", { id: item.id })
+          }
           style={styles.editButton}
         />
       )}

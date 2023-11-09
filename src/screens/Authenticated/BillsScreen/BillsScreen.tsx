@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { FlatList, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
@@ -9,12 +9,13 @@ import Button from "components/Button";
 import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import BillsFlatListRender from "components/FlatListRenders/BillsFlatListRender";
 import mockedBills from "mocks/mockedBills";
-import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
+import { BillsScreenProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./BillsScreen.styles";
 
 const BillsScreen: FC = () => {
-  const navigation = useNavigation<AuthenticatedStackParamList>();
+  const [selected, setSelected] = useState<string>("");
+  const navigation = useNavigation<BillsScreenProp>();
 
   return (
     <Background style={styles.container}>
@@ -28,7 +29,12 @@ const BillsScreen: FC = () => {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={<FlatListEmptyComponent text="a new bill" />}
         renderItem={({ item, index }) => (
-          <BillsFlatListRender item={item} index={index} />
+          <BillsFlatListRender
+            item={item}
+            index={index}
+            selected={selected}
+            setSelected={setSelected}
+          />
         )}
       />
       <View style={styles.buttonContainer}>

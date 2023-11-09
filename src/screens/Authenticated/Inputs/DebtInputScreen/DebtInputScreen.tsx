@@ -1,16 +1,29 @@
 import { FC } from "react";
 import { ScrollView } from "react-native";
 
+import { useRoute } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 
 import Background from "components/Background";
 import Button from "components/Button";
 import { TextInput } from "components/TextInput/TextInput";
+import mockedDebt from "mocks/mockedDebt";
+import { DebtInputScreenRouteProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./DebtInputScreen.styles";
-import { defaultValues, rules } from "./form";
+import { rules } from "./form";
 
 const DebtInputScreen: FC = () => {
+  const { params } = useRoute<DebtInputScreenRouteProp>();
+
+  const findDebtByID = mockedDebt.find((bill) => bill.id === params?.id);
+
+  const defaultValues = {
+    provider: findDebtByID?.provider || "",
+    owed: findDebtByID?.amount || 0,
+    paid: findDebtByID?.repayment || 0,
+  };
+
   const {
     control,
     formState: { isDirty, isValid },
@@ -48,7 +61,7 @@ const DebtInputScreen: FC = () => {
             <TextInput
               onChange={onChange}
               onBlur={onBlur}
-              value={value}
+              value={value.toString()}
               keyboardType="numeric"
               placeHolder="..."
               label="Total Owed"
@@ -65,7 +78,7 @@ const DebtInputScreen: FC = () => {
             <TextInput
               onChange={onChange}
               onBlur={onBlur}
-              value={value}
+              value={value.toString()}
               keyboardType="numeric"
               placeHolder="..."
               label="Current Progress"
@@ -76,7 +89,7 @@ const DebtInputScreen: FC = () => {
         />
       </ScrollView>
       <Button
-        title="Add"
+        title={params?.id ? "Update" : "Add"}
         type="primary"
         onPress={() => null}
         disabled={disableButton}
