@@ -21,6 +21,7 @@ type DropdownProps = {
 const Dropdown: FC<DropdownProps> = ({
   label,
   options,
+  value,
   containerStyle,
   isOpen,
   testID,
@@ -37,6 +38,16 @@ const Dropdown: FC<DropdownProps> = ({
 
   const optionLengthCheck = options.length > 5;
 
+  let text = "";
+
+  if (value) {
+    text = value;
+  } else if (selected) {
+    text = selected;
+  } else {
+    text = "Select...";
+  }
+
   return (
     <View style={containerStyle} testID={testID}>
       {label ? (
@@ -50,9 +61,7 @@ const Dropdown: FC<DropdownProps> = ({
         }
         onPress={toggleList}
       >
-        <Text style={styles.inputText}>
-          {selected ? selected : "Select..."}
-        </Text>
+        <Text style={styles.inputText}>{text}</Text>
         <Icon
           size={20}
           name={isOpen ? "chevron-up" : "chevron-down"}

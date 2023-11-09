@@ -1,19 +1,34 @@
 import { FC, useState } from "react";
 import { ScrollView } from "react-native";
 
+import { useRoute } from "@react-navigation/native";
+import moment from "moment";
 import { Controller, useForm } from "react-hook-form";
 
 import Background from "components/Background";
 import Button from "components/Button";
 import Dropdown from "components/Dropdown";
 import { TextInput } from "components/TextInput/TextInput";
+import mockedBills from "mocks/mockedBills";
+import { BillsInputScreenRouteProp } from "navigation/AuthenticatedStack.types";
 import toggleDropDownList from "utils/toggleDropDownList";
 
 import styles from "./BillsInputScreen.styles";
-import { defaultValues, rules } from "./form";
+import { rules } from "./form";
 
 const BillsInputScreen: FC = () => {
+  const { params } = useRoute<BillsInputScreenRouteProp>();
   const [openList, setOpenList] = useState<string | null>(null);
+
+  const findBillByID = mockedBills.find((bill) => bill.id === params?.id);
+
+  const defaultValues = {
+    provider: findBillByID?.provider || "",
+    price: findBillByID?.amount || "",
+    date: moment(findBillByID?.dueDate).format("Do") || "",
+    occurrence: findBillByID?.occurrence || "",
+    category: findBillByID?.category || "",
+  };
 
   const {
     control,
@@ -23,7 +38,16 @@ const BillsInputScreen: FC = () => {
     mode: "onBlur",
   });
 
-  const categoryOptions = ["Food", "Transportation", "Entertainment", "Other"];
+  const categoryOptions = [
+    "Food",
+    "Transportation",
+    "Other",
+    "House",
+    "Loan",
+    "Insurance",
+    "Utilities",
+    "Entertainment",
+  ];
   const occurrenceOptions = ["Weekly", "Monthly", "Yearly"];
   const dateOptions = [
     "1st",
@@ -88,7 +112,7 @@ const BillsInputScreen: FC = () => {
             <TextInput
               onChange={onChange}
               onBlur={onBlur}
-              value={value}
+              value={value.toString()}
               keyboardType="numeric"
               placeHolder="..."
               label="Price"
@@ -156,7 +180,7 @@ const BillsInputScreen: FC = () => {
         />
       </ScrollView>
       <Button
-        title="Add"
+        title={params?.id ? "Update" : "Add"}
         type="primary"
         onPress={() => null}
         disabled={disableButton}

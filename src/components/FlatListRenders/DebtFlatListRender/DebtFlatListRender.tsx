@@ -1,9 +1,12 @@
 import { FC } from "react";
 import { Text, View } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
+
 import Button from "components/Button";
 import Card from "components/Card";
 import ProgressBar from "components/ProgressBar";
+import { DebtScreenProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./DebtFlatListRender.styles";
 
@@ -16,30 +19,35 @@ type DebtFlatListRenderProps = {
     createAt: string;
   };
   index: number;
-  state: string;
-  setState: (value: string) => void;
+  selected: string;
+  setSelected: (value: string) => void;
 };
 
 const DebtFlatListRender: FC<DebtFlatListRenderProps> = ({
   item,
   index,
-  state,
-  setState,
+  selected,
+  setSelected,
 }) => {
+  const navigation = useNavigation<DebtScreenProp>();
   return (
     <View key={index} style={styles.cardContainer}>
       <Card
         style={styles.card}
-        onPress={() => (state === item.id ? setState("") : setState(item.id))}
+        onPress={() =>
+          selected === item.id ? setSelected("") : setSelected(item.id)
+        }
       >
         <Text style={styles.providerText}>{item.provider}</Text>
         <ProgressBar goal={item.amount} progress={item.repayment} />
       </Card>
-      {state === item.id && (
+      {selected === item.id && (
         <Button
           title="Edit"
           type="secondary"
-          onPress={() => null}
+          onPress={() =>
+            navigation.navigate("DebtInputScreen", { id: item.id })
+          }
           style={styles.editButton}
         />
       )}

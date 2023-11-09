@@ -19,7 +19,7 @@ import styles from "./AuthenticatedStack.styles";
 import { AuthenticatedStackParamList } from "./AuthenticatedStack.types";
 
 const Stack = createNativeStackNavigator<AuthenticatedStackParamList>();
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<AuthenticatedStackParamList>();
 
 const AuthenticatedStack = () => {
   const navigation = useNavigation();
