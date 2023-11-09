@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 16,
   },
+  screenHeaderText: {
+    color: config.colors.secondary,
+    fontSize: 24,
+  },
 });
 
 export default styles;

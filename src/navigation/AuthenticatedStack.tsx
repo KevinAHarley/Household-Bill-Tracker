@@ -116,7 +116,6 @@ const TabNavigator = () => {
     <Tab.Navigator
       initialRouteName="DashboardScreen"
       screenOptions={({ route: { name } }: { route: { name: string } }) => ({
-        headerShown: false,
         tabBarStyle: styles.tabBarStyle,
         tabBarIcon: () => {
           const isFocused = useIsFocused();
@@ -137,6 +136,7 @@ const TabNavigator = () => {
             />
           );
         },
+        headerShown: false,
       })}
     >
       <Tab.Screen
@@ -145,6 +145,10 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: "Bills",
           tabBarLabelStyle: styles.tabBarLabelStyle,
+          headerShown: true,
+          headerTitle: "Upcoming Payments",
+          headerTransparent: true,
+          headerTitleStyle: styles.screenHeaderText,
         }}
       />
       <Tab.Screen
@@ -153,6 +157,10 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: "Debt",
           tabBarLabelStyle: styles.tabBarLabelStyle,
+          headerShown: true,
+          headerTitle: "Debt",
+          headerTransparent: true,
+          headerTitleStyle: styles.screenHeaderText,
         }}
       />
       <Tab.Screen
@@ -169,6 +177,10 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: "Borrow",
           tabBarLabelStyle: styles.tabBarLabelStyle,
+          headerShown: true,
+          headerTitle: "Borrowing",
+          headerTransparent: true,
+          headerTitleStyle: styles.screenHeaderText,
         }}
       />
       <Tab.Screen
@@ -177,6 +189,10 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: "Savings",
           tabBarLabelStyle: styles.tabBarLabelStyle,
+          headerShown: true,
+          headerTitle: "Savings",
+          headerTransparent: true,
+          headerTitleStyle: styles.screenHeaderText,
         }}
       />
     </Tab.Navigator>

@@ -18,10 +18,7 @@ const DebtScreen: FC = () => {
   const navigation = useNavigation<AuthenticatedStackParamList>();
   return (
     <Background style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerInnerContainer}>
-          <Text style={styles.headerText}>Debt</Text>
-        </View>
+      <View style={styles.avatarContainer}>
         <Avatar initials="KH" size="S" />
       </View>
       <FlatList

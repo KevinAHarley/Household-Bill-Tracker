@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
-  headerContainer: {
-    flexDirection: "row",
+  avatarContainer: {
+    alignItems: "flex-end",
     paddingBottom: 16,
   },
   headerInnerContainer: {
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
   },
   switchButton: {
     alignSelf: "center",
-    marginTop: 20,
   },
   content: {
     flex: 1,

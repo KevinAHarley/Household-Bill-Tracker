@@ -20,10 +20,7 @@ const SavingsScreen: FC = () => {
 
   return (
     <Background style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerInnerContainer}>
-          <Text style={styles.headerText}>Savings</Text>
-        </View>
+      <View style={styles.avatarContainer}>
         <Avatar initials="KH" size="S" />
       </View>
       {goalLengthCheck ? (

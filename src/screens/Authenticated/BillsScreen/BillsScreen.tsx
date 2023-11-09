@@ -18,10 +18,7 @@ const BillsScreen: FC = () => {
 
   return (
     <Background style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerInnerContainer}>
-          <Text style={styles.headerText}>Upcoming Payments</Text>
-        </View>
+      <View style={styles.avatarContainer}>
         <Avatar initials="KH" size="S" />
       </View>
       <FlatList
