@@ -94,7 +94,7 @@ const BorrowingScreen: FC = () => {
       />
       <Button
         style={styles.addButton}
-        title="Add Bill"
+        title="Add"
         type="primary"
         onPress={() => navigation.navigate("BorrowingInputScreen")}
       />

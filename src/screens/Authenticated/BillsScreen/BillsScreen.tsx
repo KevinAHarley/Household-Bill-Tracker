@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
