@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Text, View } from "react-native";
+import { SectionList, Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -7,6 +7,7 @@ import Avatar from "components/Avatar";
 import Background from "components/Background";
 import BorrowingList from "components/BorrowingList";
 import Button from "components/Button";
+import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import SwitchButton from "components/SwitchButton";
 import mockedBorrowing from "mocks/mockedBorrowing";
 import { AuthenticatedStackParamList } from "navigation/AuthenticatedStack.types";
@@ -38,12 +39,24 @@ const BorrowingScreen: FC = () => {
     }
   };
 
+  const isListEmpty =
+    filteredBorrowingIncoming.length === 0 &&
+    filteredBorrowingOutgoing.length === 0;
+
+  const sections = [
+    {
+      title: "Incoming",
+      data: filteredBorrowingIncoming,
+    },
+    {
+      title: "Outgoing",
+      data: filteredBorrowingOutgoing,
+    },
+  ];
+
   return (
     <Background style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={styles.headerInnerContainer}>
-          <Text style={styles.headerText}>Borrowing</Text>
-        </View>
+      <View style={styles.avatarContainer}>
         <Avatar initials="KH" size="S" />
       </View>
       <SwitchButton
@@ -52,40 +65,36 @@ const BorrowingScreen: FC = () => {
         containerStyle={styles.switchButton}
         onChange={(option) => setSwitchButton(option)}
       />
-      <Text style={styles.headerText}>Incoming</Text>
-      <View style={styles.content}>
-        {filteredBorrowingIncoming.map(
-          ({ amount, name, reason, id, repaid }) => (
-            <BorrowingList
-              amount={amount}
-              name={name}
-              reason={reason}
-              checkbox
-              checked={repaid || checked.includes(id)}
-              key={id}
-              onCheckPress={() => borrowListSelected(id)}
-            />
-          )
+      <SectionList
+        sections={isListEmpty ? [] : sections}
+        contentContainerStyle={styles.sectionList}
+        renderItem={({ item, index }) => (
+          <BorrowingList
+            amount={item.amount}
+            name={item.name}
+            reason={item.reason}
+            checkbox
+            checked={item.repaid || checked.includes(item.id)}
+            key={index}
+            onCheckPress={() => borrowListSelected(item.id)}
+          />
         )}
-      </View>
-      <Text style={styles.headerText}>Outgoing</Text>
-      <View style={styles.content}>
-        {filteredBorrowingOutgoing.map(
-          ({ amount, name, reason, id, repaid }) => (
-            <BorrowingList
-              amount={amount}
-              name={name}
-              reason={reason}
-              checkbox
-              checked={repaid || checked.includes(id)}
-              key={id}
-              onCheckPress={() => borrowListSelected(id)}
-            />
-          )
+        renderSectionHeader={({ section: { title } }) => (
+          <View
+            style={
+              title === "Incoming"
+                ? styles.sectionListHeaderTop
+                : styles.sectionListHeader
+            }
+          >
+            <Text style={styles.headerText}>{title}</Text>
+          </View>
         )}
-      </View>
+        ListEmptyComponent={<FlatListEmptyComponent text="a new bill" />}
+      />
       <Button
-        title="Add Bill"
+        style={styles.addButton}
+        title="Add"
         type="primary"
         onPress={() => navigation.navigate("BorrowingInputScreen")}
       />

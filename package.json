@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "new-clear": "rm -rf node_modules && rm -rf yarn.lock && yarn",
     "web": "expo start --web",
-    "lint": "eslint ."
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" --quiet"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.10",
@@ -42,6 +42,8 @@
     "eslint-config-universe": "^12.0.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-native": "^4.1.0",
     "prettier": "^3.0.3",
     "react-dom": "18.2.0",
     "react-native-svg-transformer": "^1.1.0"

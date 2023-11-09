@@ -47,10 +47,18 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   progressText: {
-    color: config.colors.text.darkGrey,
+    color: config.colors.secondary,
+    paddingVertical: 8,
   },
   goalText: {
     color: config.colors.secondary,
+  },
+  barGoalText: {
+    color: config.colors.secondary,
+    paddingVertical: 8,
+  },
+  barProgressText: {
+    color: config.colors.text.darkGrey,
   },
 });
 

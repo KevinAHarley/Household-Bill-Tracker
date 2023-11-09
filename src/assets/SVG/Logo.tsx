@@ -1,5 +1,5 @@
-import * as React from "react";
 import Svg, { G, Path, SvgProps } from "react-native-svg";
+
 const SVGComponent = (props: SvgProps) => (
   <Svg
     width="410.000000pt"

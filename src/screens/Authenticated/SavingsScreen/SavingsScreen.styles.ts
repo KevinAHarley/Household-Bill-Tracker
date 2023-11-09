@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
-  headerContainer: {
-    flexDirection: "row",
+  avatarContainer: {
+    alignItems: "flex-end",
     paddingBottom: 16,
   },
   headerInnerContainer: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
+    marginTop: 16,
   },
   deleteButton: {
     flex: 1,
@@ -35,23 +36,14 @@ const styles = StyleSheet.create({
     flex: 3,
     marginLeft: 16,
   },
-  editButton: {
-    width: 88,
-    height: 88,
-    marginLeft: 10,
-  },
   barContainer: {
     flex: 1,
-  },
-  mapBarContainer: {
-    paddingBottom: 32,
   },
   separateBar: {
     paddingVertical: 64,
   },
-  barStyle: {
-    height: 50,
-    borderRadius: 25,
+  flatList: {
+    flexGrow: 1,
   },
 });
 

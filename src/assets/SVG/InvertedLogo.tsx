@@ -1,5 +1,5 @@
-import * as React from "react";
 import Svg, { Image, SvgProps } from "react-native-svg";
+
 const SVGComponent = (props: SvgProps) => (
   <Svg width={515} height={484} viewBox="0 0 515 484" {...props}>
     <Image

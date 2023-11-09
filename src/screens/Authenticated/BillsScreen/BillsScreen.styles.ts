@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
-  headerContainer: {
-    flexDirection: "row",
+  avatarContainer: {
+    alignItems: "flex-end",
     paddingBottom: 16,
   },
   headerInnerContainer: {
@@ -19,47 +19,20 @@ const styles = StyleSheet.create({
     color: config.colors.secondary,
     fontSize: 24,
   },
-  scrollView: {
-    paddingVertical: 32,
-  },
-  card: {
-    marginBottom: 16,
-    paddingHorizontal: 16,
-    flex: 1,
-  },
-  cardContainer: {
-    flexDirection: "row",
-  },
-  cardTopTextContainer: {
-    flexDirection: "row",
-    paddingBottom: 16,
-  },
-  cardBottomTextContainer: {
-    flexDirection: "row",
-  },
-  cardTopText: {
-    flex: 1,
-    fontSize: 18,
-    color: config.colors.secondary,
-  },
-  cardBottomText: {
-    fontSize: 18,
-    color: config.colors.secondary,
-  },
   buttonContainer: {
     flexDirection: "row",
   },
   deleteButton: {
     flex: 1,
+    marginTop: 16,
   },
   addButton: {
     flex: 3,
     marginLeft: 16,
+    marginTop: 16,
   },
-  editButton: {
-    width: 88,
-    height: 88,
-    marginLeft: 10,
+  flatList: {
+    flexGrow: 1,
   },
 });
 

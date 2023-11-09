@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
-  headerContainer: {
-    flexDirection: "row",
+  avatarContainer: {
+    alignItems: "flex-end",
     paddingBottom: 16,
   },
   headerInnerContainer: {
@@ -19,25 +19,11 @@ const styles = StyleSheet.create({
     color: config.colors.secondary,
     fontSize: 24,
   },
-  editButton: {
-    width: 88,
-    height: 104,
-    marginLeft: 10,
+  flatListContainer: {
+    flexGrow: 1,
   },
-  cardContainer: {
-    flexDirection: "row",
-  },
-  card: {
-    marginBottom: 16,
-    flex: 1,
-  },
-  scrollView: {
-    paddingVertical: 32,
-  },
-  providerText: {
-    fontSize: 18,
-    color: config.colors.secondary,
-    marginBottom: 32,
+  addButton: {
+    marginTop: 16,
   },
 });
 

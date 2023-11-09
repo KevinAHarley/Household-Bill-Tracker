@@ -3,7 +3,12 @@ module.exports = {
   root: true,
   extends: "eslint:recommended",
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "import"],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  plugins: ["@typescript-eslint", "import", "react", "react-native"],
   rules: {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
@@ -11,6 +16,7 @@ module.exports = {
     "import/newline-after-import": "warn",
     "import/no-duplicates": "error",
     "import/no-unassigned-import": "warn",
+    "react-native/no-unused-styles": 2,
     "sort-imports": [
       "error",
       { ignoreCase: true, ignoreDeclarationSort: true },
