@@ -101,7 +101,7 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
           </Text>
         </View>
       </Card>
-      <Animated.View style={[animatedStyle]}>
+      <Animated.View style={animatedStyle}>
         <Button
           title="Edit"
           type="secondary"
