@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     color: config.colors.secondary,
   },
   editButton: {
-    width: 88,
     height: 88,
     marginLeft: 10,
   },

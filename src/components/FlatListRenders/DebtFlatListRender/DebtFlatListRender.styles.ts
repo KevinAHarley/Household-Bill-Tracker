@@ -4,7 +4,6 @@ import config from "config";
 
 const styles = StyleSheet.create({
   editButton: {
-    width: 88,
     height: 104,
     marginLeft: 10,
   },
