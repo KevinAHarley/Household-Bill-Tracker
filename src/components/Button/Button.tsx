@@ -32,7 +32,10 @@ const Button: FC<ButtonProps> = ({
       testID={testID}
       disabled={disabled}
     >
-      <Text style={primaryType ? styles.primaryText : styles.secondaryText}>
+      <Text
+        style={primaryType ? styles.primaryText : styles.secondaryText}
+        numberOfLines={1}
+      >
         {title}
       </Text>
     </Pressable>

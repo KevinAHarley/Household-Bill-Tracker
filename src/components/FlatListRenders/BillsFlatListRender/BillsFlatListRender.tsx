@@ -1,9 +1,14 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
-import Animated, { useSharedValue, withTiming } from "react-native-reanimated";
+import Animated, {
+  SharedValue,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 import Button from "components/Button";
 import Card from "components/Card";
@@ -32,10 +37,45 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
   setSelected,
 }) => {
   const navigation = useNavigation<DebtScreenProp>();
-  const width = useSharedValue(0);
+  const [selectedWidth] = useState<SharedValue<number>>(useSharedValue(0));
+  const [selectedOpacity] = useState<SharedValue<number>>(useSharedValue(0));
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      width: selectedWidth.value,
+      opacity: selectedOpacity.value,
+    };
+  });
 
-  const toggleWidth = () => {
-    width.value = withTiming(width.value === 0 ? 88 : 0);
+  const selectedId = item.id === selected;
+
+  useEffect(() => {
+    if (selectedId) {
+      fadeIn();
+    } else {
+      fadeOut();
+    }
+  }, [selected]);
+
+  const fadeIn = () => {
+    if (selectedId) {
+      selectedWidth.value = withTiming(88, {
+        duration: 500,
+      });
+      selectedOpacity.value = withTiming(1, {
+        duration: 500,
+      });
+    }
+  };
+
+  const fadeOut = () => {
+    if (!selectedId) {
+      selectedWidth.value = withTiming(0, {
+        duration: 500,
+      });
+      selectedOpacity.value = withTiming(0, {
+        duration: 500,
+      });
+    }
   };
 
   return (
@@ -43,8 +83,7 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
       <Card
         style={styles.card}
         onPress={() => {
-          selected === item.id ? setSelected("") : setSelected(item.id);
-          toggleWidth();
+          selectedId ? setSelected("") : setSelected(item.id);
         }}
       >
         <View style={styles.cardTopTextContainer}>
@@ -62,7 +101,7 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
           </Text>
         </View>
       </Card>
-      <Animated.View style={{ width: width }}>
+      <Animated.View style={[animatedStyle]}>
         <Button
           title="Edit"
           type="secondary"
