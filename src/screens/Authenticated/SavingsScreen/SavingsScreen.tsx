@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
@@ -15,6 +15,7 @@ import { SavingsScreenProp } from "navigation/AuthenticatedStack.types";
 import styles from "./SavingsScreen.styles";
 
 const SavingsScreen: FC = () => {
+  const [selected, setSelected] = useState<string>("");
   const navigation = useNavigation<SavingsScreenProp>();
   const goalLengthCheck = mockedGoals.length > 1;
 
@@ -29,7 +30,12 @@ const SavingsScreen: FC = () => {
           contentContainerStyle={styles.flatList}
           ListEmptyComponent={<FlatListEmptyComponent text="a goal" />}
           renderItem={({ item, index }) => (
-            <SavingsFlatListRender item={item} index={index} />
+            <SavingsFlatListRender
+              item={item}
+              index={index}
+              selected={selected}
+              setSelected={setSelected}
+            />
           )}
         />
       ) : (
