@@ -10,7 +10,7 @@ import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import SavingsFlatListRender from "components/FlatListRenders/SavingsFlatListRender";
 import SeparatedProgressBar from "components/SeparatedProgressBar";
 import mockedGoals from "mocks/mockedGoals";
-import { SavingsScreenProp } from "navigation/AuthenticatedStack.types";
+import { SavingsScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./SavingsScreen.styles";
 

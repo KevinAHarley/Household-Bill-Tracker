@@ -12,7 +12,7 @@ import Animated, {
 import Button from "components/Button";
 import Card from "components/Card";
 import ProgressBar from "components/ProgressBar";
-import { DebtScreenProp } from "navigation/AuthenticatedStack.types";
+import { DebtScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./DebtFlatListRender.styles";
 

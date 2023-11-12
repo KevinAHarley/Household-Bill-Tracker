@@ -8,7 +8,7 @@ import Background from "components/Background";
 import Button from "components/Button";
 import { TextInput } from "components/TextInput/TextInput";
 import mockedGoals from "mocks/mockedGoals";
-import { SavingsInputScreenRouteProp } from "navigation/AuthenticatedStack.types";
+import { SavingsInputScreenRouteProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import { rules } from "./form";
 import styles from "./SavingsInputScreen.styles";

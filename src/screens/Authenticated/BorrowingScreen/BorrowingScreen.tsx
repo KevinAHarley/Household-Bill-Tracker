@@ -10,7 +10,7 @@ import Button from "components/Button";
 import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import SwitchButton from "components/SwitchButton";
 import mockedBorrowing from "mocks/mockedBorrowing";
-import { BorrowingScreenProp } from "navigation/AuthenticatedStack.types";
+import { BorrowingScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./BorrowingScreen.styles";
 

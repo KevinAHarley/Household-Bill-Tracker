@@ -9,7 +9,7 @@ import Button from "components/Button";
 import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import BillsFlatListRender from "components/FlatListRenders/BillsFlatListRender";
 import mockedBills from "mocks/mockedBills";
-import { BillsScreenProp } from "navigation/AuthenticatedStack.types";
+import { BillsScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./BillsScreen.styles";
 

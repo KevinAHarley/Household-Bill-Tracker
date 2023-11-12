@@ -15,7 +15,7 @@ import mockedBorrowing from "mocks/mockedBorrowing";
 import mockedDebt from "mocks/mockedDebt";
 import mockedGoals from "mocks/mockedGoals";
 import mockedUser from "mocks/mockedUser";
-import { DashboardScreenRouteProp } from "navigation/AuthenticatedStack.types";
+import { DashboardScreenRouteProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./DashboardScreen.styles";
 

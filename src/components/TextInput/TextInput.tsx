@@ -1,7 +1,8 @@
-import React, { FC, LegacyRef, useRef, useState } from "react";
+import { FC, LegacyRef, useRef, useState } from "react";
 import {
   KeyboardType,
   Pressable,
+  ReturnKeyType,
   TextInput as RNTextInput,
   StyleProp,
   Text,
@@ -27,6 +28,7 @@ export interface ITextInputProps {
   containerStyle?: StyleProp<ViewStyle>;
   testID?: string;
   label?: string;
+  returnKeyType?: ReturnKeyType;
   autoFocus?: boolean;
   iconPress?: () => void;
   onChange: (value: any) => void;
@@ -40,6 +42,7 @@ export const TextInput: FC<ITextInputProps> = ({
   label,
   multiline,
   keyboardType,
+  returnKeyType,
   iconRight,
   iconLeft,
   iconPress,
@@ -134,6 +137,7 @@ export const TextInput: FC<ITextInputProps> = ({
           style={styles.text}
           autoCapitalize="none"
           placeholderTextColor={config.colors.secondary}
+          returnKeyType={returnKeyType}
         />
         {iconRight ? (
           <Pressable onPress={() => iconPress}>

@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 
 import Card from "components/Card";
-import { DashboardScreenRouteProp } from "navigation/AuthenticatedStack.types";
+import { DashboardScreenRouteProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./DashboardBillsFlatListRender.styles";
 

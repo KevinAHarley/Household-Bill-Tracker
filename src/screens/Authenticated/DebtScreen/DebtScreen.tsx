@@ -9,7 +9,7 @@ import Button from "components/Button";
 import FlatListEmptyComponent from "components/FlatListEmptyComponent";
 import DebtFlatListRender from "components/FlatListRenders/DebtFlatListRender/DebtFlatListRender";
 import mockedDebt from "mocks/mockedDebt";
-import { DebtScreenProp } from "navigation/AuthenticatedStack.types";
+import { DebtScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./DebtScreen.styles";
 

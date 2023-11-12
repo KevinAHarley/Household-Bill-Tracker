@@ -11,7 +11,7 @@ import Animated, {
 
 import Button from "components/Button";
 import ProgressBar from "components/ProgressBar";
-import { SavingsScreenProp } from "navigation/AuthenticatedStack.types";
+import { SavingsScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./SavingsFlatListRender.styles";
 
