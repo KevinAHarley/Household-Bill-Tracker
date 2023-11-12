@@ -8,7 +8,7 @@ import Background from "components/Background";
 import Button from "components/Button";
 import { TextInput } from "components/TextInput/TextInput";
 import mockedDebt from "mocks/mockedDebt";
-import { DebtInputScreenRouteProp } from "navigation/AuthenticatedStack.types";
+import { DebtInputScreenRouteProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./DebtInputScreen.styles";
 import { rules } from "./form";

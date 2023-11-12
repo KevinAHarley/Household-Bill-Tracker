@@ -10,7 +10,7 @@ import Button from "components/Button";
 import Dropdown from "components/Dropdown";
 import { TextInput } from "components/TextInput/TextInput";
 import mockedBills from "mocks/mockedBills";
-import { BillsInputScreenRouteProp } from "navigation/AuthenticatedStack.types";
+import { BillsInputScreenRouteProp } from "navigation/Authenticated/AuthenticatedStack.types";
 import toggleDropDownList from "utils/toggleDropDownList";
 
 import styles from "./BillsInputScreen.styles";

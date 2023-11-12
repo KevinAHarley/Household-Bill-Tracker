@@ -12,7 +12,7 @@ import Animated, {
 
 import Button from "components/Button";
 import Card from "components/Card";
-import { BillsScreenProp } from "navigation/AuthenticatedStack.types";
+import { BillsScreenProp } from "navigation/Authenticated/AuthenticatedStack.types";
 
 import styles from "./BillsFlatListRender.styles";
 
