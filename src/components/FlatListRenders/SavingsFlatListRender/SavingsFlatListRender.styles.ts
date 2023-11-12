@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
   barStyle: {
     height: 50,
   },
+  editButton: {
+    height: 50,
+    marginLeft: 10,
+  },
 });
 
 export default styles;

@@ -12,7 +12,7 @@ import Animated, {
 
 import Button from "components/Button";
 import Card from "components/Card";
-import { DebtScreenProp } from "navigation/AuthenticatedStack.types";
+import { BillsScreenProp } from "navigation/AuthenticatedStack.types";
 
 import styles from "./BillsFlatListRender.styles";
 
@@ -36,7 +36,7 @@ const BillsFlatListRender: FC<BillsFlatListRenderProps> = ({
   selected,
   setSelected,
 }) => {
-  const navigation = useNavigation<DebtScreenProp>();
+  const navigation = useNavigation<BillsScreenProp>();
   const [selectedWidth] = useState<SharedValue<number>>(useSharedValue(0));
   const [selectedOpacity] = useState<SharedValue<number>>(useSharedValue(0));
   const animatedStyle = useAnimatedStyle(() => {

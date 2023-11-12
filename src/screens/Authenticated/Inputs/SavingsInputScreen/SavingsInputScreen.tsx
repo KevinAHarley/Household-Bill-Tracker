@@ -1,16 +1,29 @@
 import { FC } from "react";
 import { ScrollView } from "react-native";
 
+import { useRoute } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 
 import Background from "components/Background";
 import Button from "components/Button";
 import { TextInput } from "components/TextInput/TextInput";
+import mockedGoals from "mocks/mockedGoals";
+import { SavingsInputScreenRouteProp } from "navigation/AuthenticatedStack.types";
 
-import { defaultValues, rules } from "./form";
+import { rules } from "./form";
 import styles from "./SavingsInputScreen.styles";
 
 const SavingsInputScreen: FC = () => {
+  const { params } = useRoute<SavingsInputScreenRouteProp>();
+
+  const findSavingsByID = mockedGoals.find((bill) => bill.id === params?.id);
+
+  const defaultValues = {
+    name: findSavingsByID?.name || "",
+    goal: findSavingsByID?.goal || 0,
+    progress: findSavingsByID?.progress || 0,
+  };
+
   const {
     control,
     formState: { isDirty, isValid },
@@ -48,7 +61,7 @@ const SavingsInputScreen: FC = () => {
             <TextInput
               onChange={onChange}
               onBlur={onBlur}
-              value={value}
+              value={value.toString()}
               keyboardType="numeric"
               placeHolder="..."
               label="Goal"
@@ -65,7 +78,7 @@ const SavingsInputScreen: FC = () => {
             <TextInput
               onChange={onChange}
               onBlur={onBlur}
-              value={value}
+              value={value.toString()}
               keyboardType="numeric"
               placeHolder="..."
               label="Progress"
