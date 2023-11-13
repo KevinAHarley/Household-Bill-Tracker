@@ -1,23 +1,20 @@
 import { FC } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, View } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
 import { Controller, useForm } from "react-hook-form";
 
-import InvertedLogo from "assets/SVG/InvertedLogo";
 import Background from "components/Background";
 import Button from "components/Button";
+import DateTimePicker from "components/DateTimePicker";
 import { TextInput } from "components/TextInput/TextInput";
-import { LoginScreenProp } from "navigation/Authentication/AuthenticationStack.types";
 
 import { defaultValues, rules } from "./form";
-import styles from "./LoginScreen.styles";
+import styles from "./SignUpScreen.styles";
 
-const LoginScreen: FC = () => {
-  const navigation = useNavigation<LoginScreenProp>();
-
+const SignUpScreen: FC = () => {
   const {
     control,
+    setValue,
     formState: { isDirty, isValid },
   } = useForm({
     defaultValues,
@@ -26,14 +23,54 @@ const LoginScreen: FC = () => {
 
   const disableButton = !isDirty || !isValid;
 
+  const changeHirePeriodStartAt = (value: Date) => {
+    setValue("dateOfBirth", value.toISOString(), {
+      shouldTouch: true,
+      shouldDirty: true,
+      shouldValidate: true,
+    });
+  };
+
   return (
     <Background style={styles.container} bottomTab={false}>
-      <InvertedLogo width={250} height={250} style={styles.logo} />
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.inputContainer}>
+          <Controller
+            control={control}
+            defaultValue={defaultValues.name}
+            rules={rules.name}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <TextInput
+                onChange={onChange}
+                onBlur={onBlur}
+                value={value}
+                placeHolder="..."
+                label="Name"
+                containerStyle={styles.input}
+                returnKeyType="next"
+              />
+            )}
+            name="name"
+          />
+          <Controller
+            control={control}
+            defaultValue={defaultValues.dateOfBirth}
+            rules={rules.dateOfBirth}
+            render={({ field: { value } }) => (
+              <DateTimePicker
+                value={value}
+                mode="date"
+                label="Date of Birth"
+                callback={(date) => changeHirePeriodStartAt(date)}
+                minimumDate={new Date("1900-01-01")}
+                maximumDate={new Date()}
+              />
+            )}
+            name="dateOfBirth"
+          />
           <Controller
             control={control}
             defaultValue={defaultValues.email}
@@ -68,21 +105,19 @@ const LoginScreen: FC = () => {
             )}
             name="password"
           />
-          <Text onPress={() => null} style={styles.forgotPasswordText}>
-            Forgot Password?
-          </Text>
         </View>
         <Button
-          title={"Login"}
+          title={"Create Account"}
           type="primary"
           onPress={() => null}
           disabled={disableButton}
           style={styles.button}
         />
         <Button
-          title={"Sign Up"}
+          title={"Login"}
           type="secondary"
-          onPress={() => navigation.navigate("SignUpScreen")}
+          onPress={() => null}
+          disabled={disableButton}
           style={styles.button}
         />
       </ScrollView>
@@ -90,4 +125,4 @@ const LoginScreen: FC = () => {
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

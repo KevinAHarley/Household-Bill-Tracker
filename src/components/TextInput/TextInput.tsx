@@ -30,13 +30,14 @@ export interface ITextInputProps {
   label?: string;
   returnKeyType?: ReturnKeyType;
   autoFocus?: boolean;
+  style?: StyleProp<ViewStyle>;
   iconPress?: () => void;
-  onChange: (value: any) => void;
+  onChange?: (value: any) => void;
   onFocus?: () => void;
+  onPress?: () => void;
   onBlur?: () => void;
 }
 export const TextInput: FC<ITextInputProps> = ({
-  onChange,
   value,
   placeHolder,
   label,
@@ -45,11 +46,14 @@ export const TextInput: FC<ITextInputProps> = ({
   returnKeyType,
   iconRight,
   iconLeft,
-  iconPress,
   containerStyle,
   editable,
   testID,
   autoFocus,
+  style,
+  onChange,
+  onPress,
+  iconPress,
   onFocus,
   onBlur,
 }) => {
@@ -106,12 +110,13 @@ export const TextInput: FC<ITextInputProps> = ({
         onPress={() => onFocusHandler()}
         style={[
           !focus
-            ? [styles.container, containerStyle, conditionalStyles]
+            ? [styles.container, containerStyle, conditionalStyles, style]
             : [
                 styles.container,
                 styles.selectedBorder,
                 containerStyle,
                 conditionalStyles,
+                style,
               ],
         ]}
         testID={testID}
@@ -124,21 +129,23 @@ export const TextInput: FC<ITextInputProps> = ({
             style={styles.icon}
           />
         ) : undefined}
-        <RNTextInput
-          onChangeText={(text) => onChange(text)}
-          onBlur={() => onBlurHandler()}
-          value={value}
-          placeholder={placeHolder}
-          multiline={multiline}
-          editable={editable}
-          keyboardType={keyboardType}
-          ref={textInputRef}
-          autoFocus={autoFocus}
-          style={styles.text}
-          autoCapitalize="none"
-          placeholderTextColor={config.colors.secondary}
-          returnKeyType={returnKeyType}
-        />
+        <Pressable onPress={onPress}>
+          <RNTextInput
+            onChangeText={(text) => onChange(text)}
+            onBlur={() => onBlurHandler()}
+            value={value}
+            placeholder={placeHolder}
+            multiline={multiline}
+            editable={editable}
+            keyboardType={keyboardType}
+            ref={textInputRef}
+            autoFocus={autoFocus}
+            style={styles.text}
+            autoCapitalize="none"
+            placeholderTextColor={config.colors.secondary}
+            returnKeyType={returnKeyType}
+          />
+        </Pressable>
         {iconRight ? (
           <Pressable onPress={() => iconPress}>
             <Icon
