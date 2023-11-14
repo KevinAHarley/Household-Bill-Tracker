@@ -51,7 +51,7 @@ const DateTimePicker: FC<DateTimePickerTypes> = ({
       <Text style={styles.labelText}>{label}</Text>
       <Card onPress={showDatePicker} style={styles.card}>
         <Text style={styles.valueText}>{newValue}</Text>
-        <Icon name="chevron-right" size={20} color={config.colors.secondary} />
+        <Icon name="chevron-right" size={20} color={config.colors.primary} />
       </Card>
       <DateTimePickerModal
         isVisible={dateTimePickerVisible}
