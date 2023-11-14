@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 16,
   },
+  icon: {
+    marginRight: 32,
+  },
 });
 
 export default styles;
